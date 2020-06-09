@@ -1,0 +1,90 @@
+
+<!DOCTYPE html> 
+<html> 
+      
+<head> 
+    <title> 
+        Lusorede - Click on the Scene!!
+    </title> 
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+</head> 
+  
+<body style="text-align:center;"> 
+      
+    <h1 style="color:green;"> 
+        Lusorede 
+    </h1> 
+      
+    <h4> 
+        Click on the Scene!!
+    </h4> 
+  
+    <form method="post"> 
+        <button type="button" onclick="button1()">Initialize</button>
+        <button type="button" onclick="button2()">4 Tabs</button>
+        <button type="button" onclick="button3()">3 Tabs</button>
+        <button type="button" onclick="button4()">2 Tabs</button>
+        <button type="button" onclick="button5()">1 Tab</button>
+        <button type="button" onclick="button6()">Reset</button>
+
+    </form> 
+	<script type="text/javascript">
+		function button1 () {
+		$.ajax({
+        url:"initialize.php", //the page containing php script
+        type: "POST", //request type
+        success:function(result){
+         alert(result);
+		}
+		});
+		}
+		function button2 () {
+		$.ajax({
+        url:"car4.php", //the page containing php script
+        type: "POST", //request type
+        success:function(result){
+         alert(result);
+		}
+		});
+		}
+		function button3 () {
+		$.ajax({
+        url:"car3.php", //the page containing php script
+        type: "POST", //request type
+        success:function(result){
+         alert(result);
+		}
+		});
+		}
+		function button4 () {
+		$.ajax({
+        url:"car2.php", //the page containing php script
+        type: "POST", //request type
+        success:function(result){
+         alert(result);
+		}
+		});
+		}
+		function button5 () {
+		$.ajax({
+        url:"car1.php", //the page containing php script
+        type: "POST", //request type
+        success:function(result){
+         alert(result);
+		}
+		});
+		}
+		function button6 () {
+		$.ajax({
+        url:"reset.php", //the page containing php script
+        type: "POST", //request type
+        success:function(result){
+         alert(result);
+		}
+		});
+		}
+	</script>
+</body> 
+  
+</html> 
+
