@@ -19,10 +19,10 @@ apt-get update
 sudo apt-get source bluez
 cd /usr/src/bluez*
 sudo sed -i 's/return ask("Enter PIN Code: ")/return "1996"/g' //usr/src/bluez*/test/simple-agent
-sudo cp ~/lr-hr-cr/btscript.sh /usr/bin/btscript.sh
+sudo cp btscript.sh /usr/bin/btscript.sh
 sudo chmod +x /usr/bin/btscript.sh
 sudo sed -i '/exit 0/i /usr/bin/btscript.sh' /etc/rc.local
 cd /usr/bin
 sudo ./btscript.sh
-sudo cp ~/lr-hr-cr/bt_iphone.sh /usr/bin/bt_iphone.sh
+sudo cp bt_iphone.sh /usr/bin/bt_iphone.sh
 sudo chmod +x /usr/bin/bt_iphone.sh
