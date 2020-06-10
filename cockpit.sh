@@ -7,8 +7,12 @@
 #Initial Setup
 apt-get update 
 apt-get upgrade -y
+wget http://prdownloads.sourceforge.net/webadmin/webmin_1.941_all.deb
+sudo apt-get install perl libnet-ssleay-perl openssl libauthen-pam-perl libpam-runtime libio-pty-perl apt-show-versions python -y
+sudo dpkg --install webmin_1.941_all.deb
+sudo cp wpa_supplicant.conf /etc/wpa_supplicant/wpa_supplicant.conf
 
-apt-get install python cockpit -y
+apt-get install cockpit -y
 
 sudo cp ~/lr-hr-cr/www/* /var/www/html
 
@@ -23,6 +27,6 @@ sudo cp btscript.sh /usr/bin/btscript.sh
 sudo chmod +x /usr/bin/btscript.sh
 sudo sed -i '/exit 0/i /usr/bin/btscript.sh' /etc/rc.local
 cd /usr/bin
-sudo ./btscript.sh
+sudo /usr/bin/btscript.sh
 sudo cp bt_iphone.sh /usr/bin/bt_iphone.sh
 sudo chmod +x /usr/bin/bt_iphone.sh
