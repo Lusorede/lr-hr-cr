@@ -19,6 +19,15 @@ SLOT = 54/9
 
 LED=21
  
+scri = 0  
+scre = 0
+scgi = 0  
+scge = 0
+scbi = 0 
+scbe = 0
+scyi = 0 
+scye = 0
+   
 GPIO.setmode(GPIO.BCM)     #programming the GPIO by BCM pin numbers. (like PIN40 as GPIO21)
 GPIO.setwarnings(False)
 GPIO.setup(LED,GPIO.OUT)  #initialize GPIO21 (LED) as an output Pin
@@ -77,7 +86,18 @@ def red8():
     for i in range (0,(SLOT * 8)):
         strip.setPixelColor(i, 0xFF0000)
     strip.show()
-   
+def carconfig():
+   """Draw rainbow that uniformly distributes itself across all pixels."""
+   clear()
+   for i in range (scri,scre):
+       strip.setPixelColor(i, 0xFF0000)
+   for i in range (scgi,scge):
+       strip.setPixelColor(i, 0x00FF00)
+   for i in range (scbi,scbe):
+       strip.setPixelColor(i, 0x0000FF)
+   for i in range (scyi,scye):
+       strip.setPixelColor(i, 0xFFFF00)
+   strip.show()  
 
 
 server_socket=bluetooth.BluetoothSocket( bluetooth.RFCOMM )
@@ -118,7 +138,7 @@ while 1:
    scye = 0
    print ("Reset Car Configuration")
 #Car configuration
- if (data == "cars01"):    
+ if (data == "cars12"):    
   print ("R4-G3-B1-Y1")
   scrdi = 0  
   scre = 30
@@ -129,6 +149,7 @@ while 1:
   scyi = 51 
   scye = 54
   print scye
+  carconfig()
 
 ######
  if (data == "0"):    #if '0' is sent from the Android App, turn OFF the LED
