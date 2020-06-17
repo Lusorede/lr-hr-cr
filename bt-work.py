@@ -1,3 +1,8 @@
+#Neopixel Lusorede
+#Author: Hugo Rodrigues
+#Version: 0.000002
+#Lusorede
+#email: hugo.rodrigues@lusorede.pt
 import os
 import bluetooth
 import RPi.GPIO as GPIO        #calling for header file which helps in using GPIOs of PI
