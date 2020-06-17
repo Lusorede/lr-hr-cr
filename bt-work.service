@@ -1,0 +1,12 @@
+[Unit]
+Description=BT Work
+After=network.target
+StartLimitIntervalSec=0[Service]
+Type=simple
+Restart=always
+RestartSec=1
+User=pi
+ExecStart=python /usr/bin/bt-work.py
+
+[Install]
+WantedBy=multi-user.target

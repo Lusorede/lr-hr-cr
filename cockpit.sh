@@ -1,20 +1,18 @@
 #!/bin/bash   
 #Author: Hugo Rodrigues
-#Version: 0.000001
+#Version: 0.000002
 #Lusorede
 #email: hugo.rodrigues@lusorede.pt
 
 #Initial Setup
 apt-get update 
 apt-get upgrade -y
-wget http://prdownloads.sourceforge.net/webadmin/webmin_1.941_all.deb
 sudo apt-get install perl libnet-ssleay-perl openssl libauthen-pam-perl libpam-runtime libio-pty-perl apt-show-versions python -y
-sudo dpkg --install webmin_1.941_all.deb
-sudo cp wpa_supplicant.conf /etc/wpa_supplicant/wpa_supplicant.conf
 
-apt-get install cockpit -y
 
-sudo cp ~/lr-hr-cr/www/* /var/www/html
+
+
+
 
 #Config Bluetooth 
 apt-get install bluetooth bluez bluez-tools rfkill -y

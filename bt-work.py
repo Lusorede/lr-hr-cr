@@ -27,7 +27,9 @@ scbi = 0
 scbe = 0
 scyi = 0 
 scye = 0
-   
+
+configlabel = 'undefined'
+  
 GPIO.setmode(GPIO.BCM)     #programming the GPIO by BCM pin numbers. (like PIN40 as GPIO21)
 GPIO.setwarnings(False)
 GPIO.setup(LED,GPIO.OUT)  #initialize GPIO21 (LED) as an output Pin
@@ -173,7 +175,7 @@ while 1:
 #Car configuration
  if (data == "cars01"):    
   print ("R9-G0-B0-Y0")
-  scrdi = 0  
+  scri = 0  
   scre = 54
   scgi = 0  
   scge = 0
@@ -185,7 +187,7 @@ while 1:
   carconfig()
  if (data == "cars02"):    
   print ("R8-G1-B0-Y0")
-  scrdi = 0  
+  scri = 0  
   scre = 48
   scgi = 48 
   scge = 54
@@ -197,7 +199,7 @@ while 1:
   carconfig()
  if (data == "cars03"):    
   print ("R7-G2-B0-Y0")
-  scrdi = 0  
+  scri = 0  
   scre = 39
   scgi = 39 
   scge = 54
@@ -209,7 +211,7 @@ while 1:
   carconfig()
  if (data == "cars04"):    
   print ("R7-G1-B1-Y0")
-  scrdi = 0  
+  scri = 0  
   scre = 42
   scgi = 42 
   scge = 48
@@ -221,7 +223,7 @@ while 1:
   carconfig()
  if (data == "cars05"):    
   print ("R6-G3-B0-Y0")
-  scrdi = 0  
+  scri = 0  
   scre = 33
   scgi = 33
   scge = 54
@@ -233,7 +235,7 @@ while 1:
   carconfig()
  if (data == "cars06"):    
   print ("R6-G2-B1-Y0")
-  scrdi = 0  
+  scri = 0  
   scre = 33
   scgi = 33
   scge = 45
@@ -245,7 +247,7 @@ while 1:
   carconfig()
  if (data == "cars07"):    
   print ("R6-G1-B1-Y1")
-  scrdi = 0  
+  scri = 0  
   scre = 33
   scgi = 33
   scge = 39
@@ -257,7 +259,7 @@ while 1:
   carconfig()
  if (data == "cars08"):    
   print ("R5-G4-B0-Y0")
-  scrdi = 0  
+  scri = 0  
   scre = 27
   scgi = 27
   scge = 54
@@ -269,7 +271,7 @@ while 1:
   carconfig()
  if (data == "cars09"):    
   print ("R5-G3-B1-Y0")
-  scrdi = 0  
+  scri = 0  
   scre = 27
   scgi = 27
   scge = 45
@@ -281,7 +283,7 @@ while 1:
   carconfig()
  if (data == "cars10"):    
   print ("R5-G2-B2-Y0")
-  scrdi = 0  
+  scri = 0  
   scre = 27
   scgi = 27
   scge = 39
@@ -293,7 +295,7 @@ while 1:
   carconfig()
  if (data == "cars11"):    
   print ("R5-G2-B1-Y1")
-  scrdi = 0  
+  scri = 0  
   scre = 27
   scgi = 27
   scge = 39
@@ -305,7 +307,7 @@ while 1:
   carconfig()
  if (data == "cars12"):    
    print ("R4-G4-B1-Y0")
-   scrdi = 0  
+   scri = 0  
    scre = 21
    scgi = 21  
    scge = 45
@@ -317,7 +319,7 @@ while 1:
    carconfig()  
  if (data == "cars13"):    
    print ("R4-G3-B2-Y0")
-   scrdi = 0  
+   scri = 0  
    scre = 21
    scgi = 21  
    scge = 39
@@ -329,7 +331,7 @@ while 1:
    carconfig()
  if (data == "cars14"):    
    print ("R4-G3-B1-Y1")
-   scrdi = 0  
+   scri = 0  
    scre = 21
    scgi = 21  
    scge = 39
@@ -341,7 +343,7 @@ while 1:
    carconfig()
  if (data == "cars15"):    
    print ("R4-G2-B2-Y1")
-   scrdi = 0  
+   scri = 0  
    scre = 21
    scgi = 21  
    scge = 33
@@ -353,7 +355,7 @@ while 1:
    carconfig()   
  if (data == "cars16"):    
    print ("R3-G3-B3-Y0")
-   scrdi = 0  
+   scri = 0  
    scre = 16
    scgi = 16  
    scge = 33
@@ -365,7 +367,7 @@ while 1:
    carconfig()   
  if (data == "cars17"):    
    print ("R3-G3-B2-Y1")
-   scrdi = 0  
+   scri = 0  
    scre = 16
    scgi = 16  
    scge = 33
@@ -377,7 +379,7 @@ while 1:
    carconfig()   
  if (data == "cars18"):    
    print ("R3-G2-B2-Y2")
-   scrdi = 0  
+   scri = 0  
    scre = 16
    scgi = 16  
    scge = 27
@@ -432,9 +434,57 @@ while 1:
   
   
 #Commands always from the mobile device
- if (data == data.startswith('rgb')):    #if '1' is sent from the Android App, turn OFF the LED
-  print ("rgb config")
- 
+ if (data.startswith('caa',0 ,3)):    #if '1' is sent from the Android App, turn OFF the LED
+  carslotr = int(data[3]) * SLOT
+  carslotg = int(data[4]) * SLOT
+  carslotb = int(data[5]) * SLOT
+  carsloty = int(data[6]) * SLOT
+  scri = 0 
+  scre = carslotr
+  scgi = scre  
+  scge = scgi + carslotg
+  scbi = scge
+  scbe = scbi + carslotb
+  scyi = scbe
+  scye = scyi + carsloty
+  print (scri)
+  print (scre)
+  print (scgi)
+  print (scge)
+  print (scbi)
+  print (scbe)
+  print (scyi)
+  print (scye)
+  carconfig()
+ if (data.startswith('rgb-',0 ,4)):    #rgb-255255255IIEE
+  clear()
+  carslotri = int(data[13:15])
+  carslotre = int(data[15:17])  
+  colorr = int(data[4:7])
+  colorg = int(data[7:10])
+  colorb = int(data[10:13])
+  print (carslotri)
+  print (carslotre)
+  print (colorr)
+  print (colorg)
+  print (colorb)
+  carslotcolor = 0
+  #hexcolor = 0x(hex(int(carslotcolor, 16)))
+  #hexcolor = 0x + carslotcolor
+  #print (hexcolor)
+  #print (hex(int(hexcolor, 16)))
+  if (carslotcolor == "r"):
+   hexcolor = 0xFF0000
+  if (carslotcolor == "g"):
+   hexcolor = 0x00FF00
+  if (carslotcolor == "b"):
+   hexcolor = 0x0000FF
+  if (carslotcolor == "y"):
+   hexcolor = 0xFFFF00
+  for i in range (carslotri,carslotre):
+       strip.setPixelColor(i,  Color(colorr,colorg,colorb))
+  strip.show()
+  
  
 client_socket.close()
 server_socket.close()
