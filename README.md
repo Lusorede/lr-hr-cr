@@ -2,7 +2,7 @@
 
 Variables
 
-LED_COUNT--------Number of LED in STRIP.
+LED_COUNT--------Number of LED in STRIP
 LED_PIN----------GPIO pin
 LED_FREQ_HZ------LED signal frequency in hertz
 LED_DMA----------DMA channel
