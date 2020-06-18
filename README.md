@@ -1,6 +1,6 @@
-# lr-hr-cr
+##  lr-hr-cr
 
-## Variables
+## ##  Variables
 
 LED_COUNT--------Number of LED in STRIP
 LED_PIN----------GPIO pin
@@ -11,18 +11,18 @@ LED_INVERT-------True or False invert the signal
 
 
  
-#System Commands
+## ##  System Commands
 restart--------------restart equipment
 
 
 
-#Global Commands  
-quit - Leave application
-clear - Clear and Leds off
-reset - Clear strip scenario
-reload - Reload APP
+## Global Commands  
+|quit | Leave application
+|clear | Clear and Leds off
+|reset | Clear strip scenario
+|reload | Reload APP
 
-#Pre-defined Configuration
+## Pre-defined Configuration
 R - Red Slot
 G - Green Slot
 B - Blue Slot
@@ -49,7 +49,7 @@ cars17 - R3-G3-B2-Y1
 cars18 - R3-G2-B2-Y2
 
    
-#App Commands
+## App Commands
 start - Start shopping 
 sred - Light up Red Slot
 sgreen - Light up Green Slot
@@ -58,7 +58,7 @@ syellow - Light up Yellow Slot
 finalized - Shop finalized
 
 
-#Configuration Commands from mobile device
+## Configuration Commands from mobile device
 caaRGBY - R number of space in slot Red
           G number of space in slot Green
           B number of space in slot Blue
