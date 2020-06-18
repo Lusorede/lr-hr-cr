@@ -16,7 +16,7 @@ restart--------------restart equipment
 
 
 
-## Global Commands  
+| Global Commands  
 |quit | Leave application
 |clear | Clear and Leds off
 |reset | Clear strip scenario
