@@ -17,10 +17,13 @@ restart--------------restart equipment
 
 
 | Global Commands  
-|quit | Leave application
-|clear | Clear and Leds off
-|reset | Clear strip scenario
-|reload | Reload APP
+
+| :------ | :---: |
+|Command | Explanation |
+|quit | Leave application |
+|clear | Clear and Leds off|
+|reset | Clear strip scenario|
+|reload | Reload APP|
 
 ## Pre-defined Configuration
 R - Red Slot
