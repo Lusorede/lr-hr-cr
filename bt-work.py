@@ -57,7 +57,7 @@ if os.path.isfile('/home/pi/btstrip.conf'):
 #LED_BRIGHTNESS = 255     # Set to 0 for darkest and 255 for brightest
 #LED_INVERT     = False   # True to invert the signal (when using NPN tr$
 
-SLOT = LED_COUNT/8
+SLOT = (LED_COUNT - 7) /8
 
 LED=21
 
@@ -182,181 +182,181 @@ while 1:
  if (data == "cars01"):    
   print ("R8-G0-B0-Y0")
   scri = 0
-  scre = scri + 8 * SLOT
-  scgi = scre
+  scre = scri + 7 + 8 * SLOT
+  scgi = scre + 1
   scge = scgi + 0 * SLOT
-  scbi = scge
+  scbi = scge + 1
   scbe = scbi + 0 * SLOT
-  scyi = scbe
+  scyi = scbe + 1
   scye = scyi + 0 * SLOT
   configlabel = data
   carconfig()
  if (data == "cars02"):    
   print ("R7-G1-B0-Y0")
   scri = 0 * SLOT
-  scre = scri + 7 * SLOT
-  scgi = scre
+  scre = scri + 6 + 7 * SLOT
+  scgi = scre + 1
   scge = scgi + 1 * SLOT
-  scbi = scge
+  scbi = scge + 1
   scbe = scbi + 0 * SLOT
-  scyi = scbe
+  scyi = scbe + 1
   scye = scyi + 0 * SLOT
   configlabel = data
   carconfig()
  if (data == "cars03"):    
   print ("R6-G2-B0-Y0")
   scri = 0 * SLOT
-  scre = scri + 6 * SLOT
-  scgi = scre
-  scge = scgi + 2 * SLOT
-  scbi = scge
+  scre = scri + 5 + 6 * SLOT
+  scgi = scre + 1
+  scge = scgi + 1 + 2 * SLOT
+  scbi = scge + 1
   scbe = scbi + 0 * SLOT
-  scyi = scbe
+  scyi = scbe + 1
   scye = scyi + 0 * SLOT
   configlabel = data
   carconfig()
  if (data == "cars04"):    
   print ("R6-G1-B1-Y0")
   scri = 0 * SLOT
-  scre = scri + 6 * SLOT
-  scgi = scre
+  scre = scri + 5 + 6 * SLOT
+  scgi = scre + 1
   scge = scgi + 1 * SLOT
-  scbi = scge
+  scbi = scge + 1
   scbe = scbi + 1 * SLOT
-  scyi = scbe
+  scyi = scbe + 1
   scye = scyi + 0 * SLOT
   configlabel = data
   carconfig()
  if (data == "cars05"):    
   print ("R5-G3-B0-Y0")
   scri = 0 * SLOT
-  scre = scri + 5 * SLOT
-  scgi = scre
-  scge = scgi + 3 * SLOT
-  scbi = scge
+  scre = scri + 4 + 5 * SLOT
+  scgi = scre + 1
+  scge = scgi + 2 + 3 * SLOT
+  scbi = scge + 1
   scbe = scbi + 0 * SLOT
-  scyi = scbe
+  scyi = scbe + 1
   scye = scyi + 0 * SLOT
   configlabel = data
   carconfig()
  if (data == "cars06"):    
   print ("R5-G2-B1-Y0")
   scri = 0 * SLOT
-  scre = scri + 5 * SLOT
-  scgi = scre
-  scge = scgi + 2 * SLOT
-  scbi = scge
-  scbe = scbi + 1 * SLOT
-  scyi = scbe
+  scre = scri + 4 + 5 * SLOT
+  scgi = scre + 1
+  scge = scgi + 1 + 2 * SLOT
+  scbi = scge + 1
+  scbe = scbi + 0 + 1 * SLOT
+  scyi = scbe + 1
   scye = scyi + 0 * SLOT
   configlabel = data
   carconfig()
  if (data == "cars07"):    
   print ("R5-G1-B1-Y1")
   scri = 0 * SLOT
-  scre = scri + 5 * SLOT
-  scgi = scre
+  scre = scri + 4 + 5 * SLOT
+  scgi = scre + 1
   scge = scgi + 1 * SLOT
-  scbi = scge
+  scbi = scge + 1
   scbe = scbi + 1 * SLOT
-  scyi = scbe
+  scyi = scbe + 1
   scye = scyi + 1 * SLOT
   configlabel = data
   carconfig()
  if (data == "cars08"):    
   print ("R4-G4-B0-Y0")
   scri = 0 * SLOT
-  scre = scri + 4 * SLOT
-  scgi = scre
-  scge = scgi + 4 * SLOT
-  scbi = scge
+  scre = scri + 3 + 4 * SLOT
+  scgi = scre + 1
+  scge = scgi + 3 + 4 * SLOT
+  scbi = scge + 1
   scbe = scbi + 0 * SLOT
-  scyi = scbe
+  scyi = scbe + 1
   scye = scyi + 0 * SLOT
   configlabel = data
   carconfig()
  if (data == "cars09"):    
   print ("R4-G3-B1-Y0")
   scri = 0 * SLOT
-  scre = scri + 4 * SLOT
-  scgi = scre
-  scge = scgi + 3 * SLOT
-  scbi = scge
+  scre = scri + 3 + 4 * SLOT
+  scgi = scre + 1
+  scge = scgi + 2 + 3 * SLOT
+  scbi = scge + 1
   scbe = scbi + 1 * SLOT
-  scyi = scbe
+  scyi = scbe + 1
   scye = scyi + 0 * SLOT
   configlabel = data
   carconfig()
  if (data == "cars10"):    
   print ("R4-G2-B2-Y0")
   scri = 0 * SLOT
-  scre = scri + 4 * SLOT
-  scgi = scre
-  scge = scgi + 2 * SLOT
-  scbi = scge
-  scbe = scbi + 2 * SLOT
-  scyi = scbe
+  scre = scri + 3 + 4 * SLOT
+  scgi = scre + 1
+  scge = scgi + 1 + 2 * SLOT
+  scbi = scge + 1
+  scbe = scbi + 1 + 2 * SLOT
+  scyi = scbe + 1
   scye = scyi + 0 * SLOT
   configlabel = data
   carconfig()
  if (data == "cars11"):    
   print ("R4-G2-B1-Y1")
   scri = 0 * SLOT
-  scre = scri + 4 * SLOT
-  scgi = scre
-  scge = scgi + 2 * SLOT
-  scbi = scge
+  scre = scri + 3 + 4 * SLOT
+  scgi = scre + 1
+  scge = scgi + 1 + 2 * SLOT
+  scbi = scge + 1
   scbe = scbi + 1 * SLOT
-  scyi = scbe
+  scyi = scbe + 1
   scye = scyi + 1 * SLOT
   configlabel = data
   carconfig()
  if (data == "cars12"):    
    print ("R3-G3-B2-Y0")
    scri = 0 * SLOT
-   scre = scri + 3 * SLOT
-   scgi = scre
-   scge = scgi + 3 * SLOT
-   scbi = scge
-   scbe = scbi + 2 * SLOT
-   scyi = scbe
+   scre = scri + 2 + 3 * SLOT
+   scgi = scre + 1
+   scge = scgi + 2 + 3 * SLOT
+   scbi = scge + 1
+   scbe = scbi + 1 + 2 * SLOT
+   scyi = scbe + 1
    scye = scyi + 0 * SLOT
    configlabel = data
    carconfig() 
  if (data == "cars13"):    
    print ("R3-G3-B1-Y1")
    scri = 0 * SLOT
-   scre = scri + 3 * SLOT
-   scgi = scre
-   scge = scgi + 3 * SLOT
-   scbi = scge
+   scre = scri + 2 + 3 * SLOT
+   scgi = scre + 1
+   scge = scgi + 2 + 3 * SLOT
+   scbi = scge + 1
    scbe = scbi + 1 * SLOT
-   scyi = scbe
+   scyi = scbe + 1
    scye = scyi + 1 * SLOT
    configlabel = data
    carconfig()
  if (data == "cars14"):    
    print ("R3-G2-B2-Y1")
    scri = 0 * SLOT
-   scre = scri + 3 * SLOT
-   scgi = scre
-   scge = scgi + 2 * SLOT
-   scbi = scge
-   scbe = scbi + 2 * SLOT
-   scyi = scbe
+   scre = scri + 2 + 3 * SLOT
+   scgi = scre + 1
+   scge = scgi + 1 + 2 * SLOT
+   scbi = scge + 1
+   scbe = scbi + 1 + 2 * SLOT
+   scyi = scbe + 1
    scye = scyi + 1 * SLOT
    configlabel = data
    carconfig() 
  if (data == "cars15"):    
    print ("R2-G2-B2-Y2")
    scri = 0 * SLOT
-   scre = scri + 2 * SLOT
-   scgi = scre
-   scge = scgi + 2 * SLOT
-   scbi = scge
-   scbe = scbi + 2 * SLOT
-   scyi = scbe
-   scye = scyi + 2 * SLOT
+   scre = scri + 1 + 2 * SLOT
+   scgi = scre + 1
+   scge = scgi + 1 + 2 * SLOT
+   scbi = scge + 1
+   scbe = scbi + 1 + 2 * SLOT
+   scyi = scbe + 1
+   scye = scyi + 1 + 2 * SLOT
    configlabel = data
    carconfig()  
 
