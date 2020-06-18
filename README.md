@@ -11,21 +11,27 @@ LED_INVERT-------True or False invert the signal
 
 
  
-## ##  System Commands
-restart--------------restart equipment
+## System Commands
 
-
-
-| Global Commands  
-
-| :------ | :---: |
 |Command | Explanation |
+| :------ | :--- |
+| restart | restart equipment
+
+
+
+## Global Commands
+
+|Command | Explanation |
+| :------ | :--- |
 |quit | Leave application |
 |clear | Clear and Leds off|
 |reset | Clear strip scenario|
 |reload | Reload APP|
 
 ## Pre-defined Configuration
+
+|Slot | Explanation |
+| :--: | :--- |
 R - Red Slot
 G - Green Slot
 B - Blue Slot
