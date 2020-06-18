@@ -1,6 +1,6 @@
 # lr-hr-cr
 
-Variables
+## Variables
 
 LED_COUNT--------Number of LED in STRIP
 LED_PIN----------GPIO pin
