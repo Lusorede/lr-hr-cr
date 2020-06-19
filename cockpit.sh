@@ -17,7 +17,8 @@ apt-get install dpkg-dev libglib2.0-dev libdbus-1-dev libudev-dev libical-dev li
 reboot
 
 git clone https://github.com/Lusorede/lr-hr-cr.git
-
+cd lr-hr-cr
+sudo ./hostaname.sh
 
 
 #Config Bluetooth 

@@ -10,10 +10,10 @@ import bluetooth
 import RPi.GPIO as GPIO
 import time
 from rpi_ws281x import *
-from strandtest import *
+#from strandtest import *
 import argparse
 
-if os.path.isfile('/home/pi/btvars.py'):
+if os.path.isfile('btvars.py'):
   import btvars
   scri = btvars.scri 
   scre = btvars.scre
@@ -32,21 +32,24 @@ if os.path.isfile('/home/pi/btvars.py'):
   print (scyi)
   print (scye)
 
-if os.path.isfile('/home/pi/btstrip.conf'):
-  import btstrip.conf
+if os.path.isfile('btstrip.py'):
+  import btstrip
   LED_COUNT = btstrip.LED_COUNT     
   LED_PIN   = btstrip.LED_PIN  
-
+  LED_INVERT = btstrip.LED_INVERT 
   LED_FREQ_HZ = btstrip.LED_FREQ_HZ   
   LED_DMA = btstrip.LED_DMA  
   LED_BRIGHTNESS = btstrip.LED_BRIGHTNESS
+  LED_CHANNEL    = btstrip.LED_CHANNEL
+  LED_IN_SLOT = btstrip.LED_IN_SLOT
+  N_SLOTS = btstrip.N_SLOTS
 
-  print ("LED_COUNT=" + LED_COUNT )
-  print ("LED_PIN=" + LED_PIN   )
-  print ("LED_FREQ_HZ=" + LED_FREQ_HZ    )
-  print ("LED_DMA=" + LED_DMA )
-  print ("LED_BRIGHTNESS=" + LED_BRIGHTNESS )
-  print ("LED_INVERT=" + LED_INVERT )
+if os.path.isfile('irsensor.py'):
+  import irsensor
+  IR_Sensor_1 = irsensor.IR_Sensor_1
+  IR_Sensor_2  = irsensor.IR_Sensor_2
+  IR_Sensor_3 = irsensor.IR_Sensor_3
+  IR_Sensor_4 = irsensor.IR_Sensor_4
 
 
 #LED_COUNT      = 59      # Number of LED pixels.
@@ -56,10 +59,16 @@ if os.path.isfile('/home/pi/btstrip.conf'):
 #LED_DMA        = 10      # DMA channel to use for generating signal (tr$
 #LED_BRIGHTNESS = 255     # Set to 0 for darkest and 255 for brightest
 #LED_INVERT     = False   # True to invert the signal (when using NPN tr$
+#LED_CHANNEL    = 0       # set to '1' for GPIOs 13, 19, 41, 45 or 53
 
-SLOT = (LED_COUNT - 7) /8
+SLOT = (LED_COUNT - LED_IN_SLOT) / N_SLOTS
 
-LED=21
+#LED=21
+
+#IR_Sensor_1 = 35
+#IR_Sensor_2 = 36
+#IR_Sensor_3 = 37
+#IR_Sensor_4 = 38
 
 
 
@@ -67,11 +76,12 @@ configlabel = 'undefined'
   
 GPIO.setmode(GPIO.BCM)     #programming the GPIO by BCM pin numbers. (like PIN40 as GPIO21)
 GPIO.setwarnings(False)
-GPIO.setup(LED,GPIO.OUT)  #initialize GPIO21 (LED) as an output Pin
-GPIO.output(LED,0)
+GPIO.setup(16,GPIO.IN)
+GPIO.setup(36,GPIO.IN)
+#GPIO.output(LED,0)
 
 def reg_var():
-  f = open( '/home/pi/btvars.py', 'w' )
+  f = open( 'btvars.py', 'w' )
   f.write( 'scri = ' + repr(scri) + '\n' )
   f.write( 'scre = ' + repr(scre) + '\n' )
   f.write( 'scgi = ' + repr(scgi) + '\n' )
@@ -98,6 +108,7 @@ def carconfig():
    for i in range (scyi,scye):
        strip.setPixelColor(i, 0xFFFF00)
    strip.show()
+   client_socket.send(data)
 def sred():
    for i in range (scri,scre):
        strip.setPixelColor(i, 0xFF0000)
@@ -107,7 +118,8 @@ def sred():
        strip.setPixelColor(i, 0x000000)
    for i in range (scyi,scye):
        strip.setPixelColor(i, 0x000000)
-   strip.show()   
+   strip.show()  
+   client_socket.send(data)   
 def sgreen():
    for i in range (scri,scre):
        strip.setPixelColor(i, 0x000000)
@@ -118,6 +130,7 @@ def sgreen():
    for i in range (scyi,scye):
        strip.setPixelColor(i, 0x000000)
    strip.show()  
+   client_socket.send(data)   
 def sblue():
    for i in range (scri,scre):
        strip.setPixelColor(i, 0x000000)
@@ -127,7 +140,8 @@ def sblue():
        strip.setPixelColor(i, 0x0000FF)
    for i in range (scyi,scye):
        strip.setPixelColor(i, 0x000000)
-   strip.show()  
+   strip.show()
+   client_socket.send(data)   
 def syellow():
    for i in range (scri,scre):
        strip.setPixelColor(i, 0x000000)
@@ -138,7 +152,7 @@ def syellow():
    for i in range (scyi,scye):
        strip.setPixelColor(i, 0xFFFF00)
    strip.show() 
-
+   client_socket.send(data)
 server_socket=bluetooth.BluetoothSocket( bluetooth.RFCOMM )
  
 port = 1
@@ -150,11 +164,27 @@ client_socket,address = server_socket.accept()
 print "Accepted connection from ",address
 strip = Adafruit_NeoPixel(LED_COUNT, LED_PIN, LED_FREQ_HZ, LED_DMA, LED_INVERT, LED_BRIGHTNESS, LED_CHANNEL)
 strip.begin()
-while 1:
+
+################################
+# IR SENSORS
+################################
+
+try:
+ while 1:
+
+
+# if GPIO.input(16)==1:
+#  print "Open"
+  if GPIO.input(36)==1:
+   print "Open"
+  
+  
+while 2:
  
  data = client_socket.recv(1024)
  print "Received: %s" % data
- 
+
+
 #System Commnds
  if (data == "restart"):    #restart equipment
   print ("Restart LC-HR-CR")
