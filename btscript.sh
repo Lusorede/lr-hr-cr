@@ -5,7 +5,7 @@ if [ $result -ge 0 ]; then
     sudo hciconfig hci0 piscan
     sudo hciconfig hci0 sspmode 0
 	sudo hciconfig hci0 name "LR-CAR-$btmac"
-    sudo /usr/bin/python /usr/src/bluez-*/test/simple-agent &
+    sudo /usr/bin/python /home/bluez-*/test/simple-agent &
 else
     echo "BT Agent already started" 
 fi
