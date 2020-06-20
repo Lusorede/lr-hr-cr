@@ -88,13 +88,7 @@ SLOT = (LED_COUNT - LED_IN_SLOT) / N_SLOTS
 configlabel = 'undefined'
   
 GPIO.setmode(GPIO.BCM)     #programming the GPIO by BCM pin numbers. (like PIN40 as GPIO21)
-GPIO.setwarnings(True)
-channels = [LED_PIN1,LED_PIN2]
-GPIO.cleanup(channels)
-GPIO.setup (LED_PIN1,GPIO.OUT)
-GPIO.output (LED_PIN1,0)
-GPIO.setup (LED_PIN2,GPIO.OUT)
-GPIO.output (LED_PIN2,1)
+GPIO.setwarnings(False)
 GPIO.setup (IR_Sensor_1,GPIO.IN,GPIO.PUD_UP)
 GPIO.setup (IR_Sensor_2,GPIO.IN,GPIO.PUD_UP)
 GPIO.setup (IR_Sensor_3,GPIO.IN,GPIO.PUD_UP)
@@ -139,100 +133,72 @@ def reg_var():
   f.close()
 
 def clear():
-   for i in range(strip1.numPixels()):
-      strip1.setPixelColor(i, Color(0, 0, 0))
-   for i in range(strip2.numPixels()):
-      strip2.setPixelColor(i, Color(0, 0, 0))
-   strip1.show()
-   strip2.show()
+   for i in range(strip.numPixels()):
+      strip.setPixelColor(i, Color(0, 0, 0))
+   strip.show()
 def carconfig():
    clear()
    reg_var()
    for i in range (scri,scre):
-       strip1.setPixelColor(i, 0xFF0000)
-       strip2.setPixelColor(i, 0xFF0000)
+       strip.setPixelColor(i, 0xFF0000)
    for i in range (scgi,scge):
-       strip1.setPixelColor(i, 0x00FF00)
-       strip2.setPixelColor(i, 0x00FF00)
+       strip.setPixelColor(i, 0x00FF00)
    for i in range (scbi,scbe):
-       strip1.setPixelColor(i, 0x0000FF)
-       strip2.setPixelColor(i, 0x0000FF)
+       strip.setPixelColor(i, 0x0000FF)
    for i in range (scyi,scye):
-       strip1.setPixelColor(i, 0xFFFF00)
-       strip2.setPixelColor(i, 0xFFFF00)
-   strip1.show()
-   strip2.show()
+       strip.setPixelColor(i, 0xFFFF00)
+   strip.show()
    client_socket.send(data)
    print ("Car Slot are configured as " )
 def sred():
    for i in range (scri,scre):
-       strip1.setPixelColor(i, 0xFF0000)
-       strip2.setPixelColor(i, 0xFF0000)
+       strip.setPixelColor(i, 0xFF0000)
    for i in range (scgi,scge):
-       strip1.setPixelColor(i, 0x000000)
-       strip2.setPixelColor(i, 0x000000)
+       strip.setPixelColor(i, 0x000000)
    for i in range (scbi,scbe):
-       strip1.setPixelColor(i, 0x000000)
-       strip2.setPixelColor(i, 0x000000)
+       strip.setPixelColor(i, 0x000000)
    for i in range (scyi,scye):
-       strip1.setPixelColor(i, 0x000000)
-       strip2.setPixelColor(i, 0x000000)
-   strip1.show()  
-   strip2.show()  
+       strip.setPixelColor(i, 0x000000)
+   strip.show()  
    client_socket.send(data)   
 def sgreen():
    for i in range (scri,scre):
-       strip1.setPixelColor(i, 0x000000)
-       strip2.setPixelColor(i, 0x000000)
+       strip.setPixelColor(i, 0x000000)
    for i in range (scgi,scge):
-       strip1.setPixelColor(i, 0x00FF00)
-       strip2.setPixelColor(i, 0x00FF00)
+       strip.setPixelColor(i, 0x00FF00)
    for i in range (scbi,scbe):
-       strip1.setPixelColor(i, 0x000000)
-       strip2.setPixelColor(i, 0x000000)
+       strip.setPixelColor(i, 0x000000)
    for i in range (scyi,scye):
-       strip1.setPixelColor(i, 0x000000)
-       strip2.setPixelColor(i, 0x000000)
-   strip1.show()  
-   strip2.show()  
+       strip.setPixelColor(i, 0x000000)
+   strip.show()  
    client_socket.send(data)   
 def sblue():
    for i in range (scri,scre):
-       strip1.setPixelColor(i, 0x000000)
-       strip2.setPixelColor(i, 0x000000)
+       strip.setPixelColor(i, 0x000000)
    for i in range (scgi,scge):
-       strip1.setPixelColor(i, 0x000000)
-       strip2.setPixelColor(i, 0x000000)
+       strip.setPixelColor(i, 0x000000)
    for i in range (scbi,scbe):
-       strip1.setPixelColor(i, 0x0000FF)
-       strip2.setPixelColor(i, 0x0000FF)
+       strip.setPixelColor(i, 0x0000FF)
    for i in range (scyi,scye):
-       strip1.setPixelColor(i, 0x000000)
-       strip2.setPixelColor(i, 0x000000)
-   strip1.show()
-   strip2.show()
+       strip.setPixelColor(i, 0x000000)
+   strip.show()
    client_socket.send(data)   
 def syellow():
    for i in range (scri,scre):
-       strip1.setPixelColor(i, 0x000000)
-       strip2.setPixelColor(i, 0x000000)
+       strip.setPixelColor(i, 0x000000)
    for i in range (scgi,scge):
-       strip1.setPixelColor(i, 0x000000)
-       strip2.setPixelColor(i, 0x000000)
+       strip.setPixelColor(i, 0x000000)
    for i in range (scbi,scbe):
-       strip1.setPixelColor(i, 0x000000)
-       strip2.setPixelColor(i, 0x000000)
+       strip.setPixelColor(i, 0x000000)
    for i in range (scyi,scye):
-       strip1.setPixelColor(i, 0xFFFF00)
-       strip2.setPixelColor(i, 0xFFFF00)
-   strip1.show() 
-   strip2.show() 
+       strip.setPixelColor(i, 0xFFFF00)
+   strip.show() 
    client_socket.send(data)
    
    
 
 strip1 = Adafruit_NeoPixel(LED_COUNT, LED_PIN1, LED_FREQ_HZ, LED_DMA, LED_INVERT, LED_BRIGHTNESS, LED_CHANNEL)
-strip2 = Adafruit_NeoPixel(LED_COUNT, LED_PIN2, LED_FREQ_HZ, LED_DMA, LED_INVERT, LED_BRIGHTNESS, 1)
+strip2 = Adafruit_NeoPixel(LED_COUNT, LED_PIN2, LED_FREQ_HZ, LED_DMA, LED_INVERT, LED_BRIGHTNESS, LED_CHANNEL)
 strip1.begin()
 strip2.begin()
 
@@ -561,10 +527,8 @@ while 1:
   if (carslotcolor == "y"):
    hexcolor = 0xFFFF00
   for i in range (carslotri,carslotre):
-       strip1.setPixelColor(i,  Color(colorr,colorg,colorb))
-       strip2.setPixelColor(i,  Color(colorr,colorg,colorb))
-  strip1.show()
-  strip2.show()
+       strip.setPixelColor(i,  Color(colorr,colorg,colorb))
+  strip.show()
   
 client_socket.close()
 server_socket.close()

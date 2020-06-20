@@ -2,7 +2,7 @@
 After=network.service
 
 [Service]
-ExecStart=/usr/local/bin/btscript.sh
+ExecStart=/home/ubuntu/lr-hr-cr/bin/btwork.sh
 
 [Install]
 WantedBy=default.target

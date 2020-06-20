@@ -1,0 +1,13 @@
+IR_Sensor_1 = 6 #GPIO number
+IR_Sensor_2 = 13 #GPIO number
+IR_Sensor_3 = 19 #GPIO number
+IR_Sensor_4 = 26 #GPIO number
+IR_Sensor_5 = 12 #GPIO number
+IR_Sensor_6 = 16 #GPIO number
+IR_Sensor_7 = 20 #GPIO number
+IR_Sensor_8 = 21 #GPIO number
+I_Restart = 5 #GPIO number
+I_Pair = 11 #GPIO number
+IR_time = 500 # time in ms
+Restart_time = 5000 # time in ms
+Pair_time = 200 # time in ms

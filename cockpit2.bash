@@ -43,9 +43,16 @@ cp /home/ubuntu/lr-hr-cr/btscript.service  /etc/systemd/system/btscript.service
 cp /home/ubuntu/lr-hr-cr/btscript.sh /usr/local/bin/btscript.sh
 sudo chmod 744 /usr/local/bin/btscript.sh
 sudo chmod 664 /etc/systemd/system/btscript.service
+bluetoothctl power on
 sudo systemctl daemon-reload
 sudo systemctl enable btscript.service
-
+sudo systemctl start btscript
+ 
+sudo cp /home/ubuntu/lr-hr-cr/bt-work.service  /etc/systemd/system/bt-work.service 
+sudo chmod 664 /etc/systemd/system/bt-work.service
+sudo systemctl daemon-reload
+sudo systemctl enable bt-work.service
+sudo systemctl start bt-work
 
 
 
