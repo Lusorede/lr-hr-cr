@@ -353,9 +353,31 @@ def ir_slot04(channel):
 def ir_slot05(channel):
  client_socket.send('ir_slot05')
 def ir_slot06(channel):
- client_socket.send('ir_slot06')
+ if GPIO.event_detected(IR_Sensor_6):
+  #	IR06_ST = IR06_ST + 1
+  IR06_ST = IR06_ST_I + 1
+  IR06_ST = IR06_ST + IR06_ST
+  reg_matrix()
+  
+  print IR06_ST
+  print('Button 06 pressed')
+  
+  print IR_BLUE
+ if IR_Sensor_6:
+  client_socket.send('ir_slot06')
+
+  #print IR06_ST
+  check_basket()
+  print "IR06_up"
+ sleep(0.5)
+
 def ir_slot07(channel):
- client_socket.send('ir_slot07')
+ if IR_Sensor_7:
+  client_socket.send('ir_slot07')
+  IR07_ST = 1
+  print IR07_ST
+ IR07_ST = 0
+ print IR07_ST 
 def ir_slot08(channel):
  client_socket.send('ir_slot08')
 

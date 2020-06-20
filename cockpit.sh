@@ -13,7 +13,7 @@ apt-get upgrade -y
 
 apt-get install git net-tools python python-dbus bluetooth bluez bluez-tools rfkill -y
 apt-get install dpkg-dev libglib2.0-dev libdbus-1-dev libudev-dev libical-dev libreadline-dev -y
-
+sudo timedatectl set-timezone Europe/Lisbon
 reboot
 
 git clone https://github.com/Lusorede/lr-hr-cr.git

@@ -1,8 +1,12 @@
 [Unit]
-After=network.service
+Requires=bluetooth.service
+After=bluetooth.service
+
 
 [Service]
-ExecStart=/home/ubuntu/lr-hr-cr/bin/btwork.sh
+ExecStartPre=/bin/sleep 5
+ExecStart=/usr/local/bin/btscript.sh
+Restart=always
 
 [Install]
 WantedBy=default.target
