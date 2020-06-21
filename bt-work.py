@@ -1,26 +1,88 @@
 #Neopixel Lusorede
 #Author: Hugo Rodrigues
-#Version: 0.000002
+#Version: 0.01
 #Lusorede
 #email: hugo.rodrigues@lusorede.pt
 import os
 import os.path
 import sys
+import glob
+import socket
+import logging
+import logging.handlers
 import bluetooth
 import RPi.GPIO as GPIO
 import time
-from time import sleep, time
 from rpi_ws281x import *
-#from test import *
 import argparse
-print ""
-print ""
-print ""
-print ""
-print ""
-print "LR-CR staring..."
-print "Please waiting.."
-if os.path.isfile('btvars.py'):
+
+#####################
+#LOG_FILENAME = '/var/log/bt-work-py.log'
+## Set up a specific logger with our desired output level
+#bt_logger = logging.getLogger('BTLogger')
+#bt_logger.setLevel(logging.DEBUG)
+#
+## Add the log message handler to the logger
+#handler = logging.handlers.RotatingFileHandler(
+#              LOG_FILENAME, maxBytes=20, backupCount=5)
+#
+#bt_logger.addHandler(handler)
+#
+## Log some messages
+#for i in range(20):
+#    bt_logger.debug('i = %d' % i)
+#
+## See what files are created
+#logfiles = glob.glob('%s*' % LOG_FILENAME)
+#
+#for filename in logfiles:
+#    print filename
+
+def clear_screen(): 
+ _ = os.system('clear') 
+
+time.sleep(5)
+clear_screen()
+print "       "
+print "       "
+print "       "
+print "                                ##############################################"
+print "                                #            Neopixel Lusorede               #"
+print "                                #            Version: 0.03                   #"
+print "                                #                Beta Test                   #"
+print "                                #                                            #"
+print "                                #           ",socket.gethostname(),"            #"
+print "                                #                                            #"
+print "                                #           suporte@lusorede.pt              #"
+print "                                #                                            #"
+print "                                ##############################################"
+print "       "
+print "       "
+print "       "
+print "       "
+print "       "
+print "                                 #           #       #    ########    ########    ########    ########    #####       ########    "
+print "                                 #           #       #    #           #      #    #      #    #           #     #     #           "
+print "                                 #           #       #    #           #      #    #      #    #           #      #    #           "
+print "                                 #           #       #    #           #      #    #      #    #           #      #    #           "
+print "                                 #           #       #    ########    #      #    ########    ########    #      #    ########    "
+print "                                 #           #       #           #    #      #    #   #       #           #      #    #           "
+print "                                 #           #       #           #    #      #    #    #      #           #      #    #           "
+print "                                 #           #       #           #    #      #    #     #     #           #     #     #           "
+print "                                 ########    #########    ########    ########    #      #    ########    ######      ########    "
+print "       "
+print "       "
+print "       "
+print "       "
+print "       "
+print "                                 LR-CR staring..."
+print "                                 Please waiting.."
+print "       "
+print "       "
+print "       "
+print "       "
+print "       "
+if os.path.isfile('/home/ubuntu/lr-hr-cr/btvars.py'):
   import btvars
   scri = btvars.scri 
   scre = btvars.scre
@@ -32,7 +94,7 @@ if os.path.isfile('btvars.py'):
   scye = btvars.scye
 
 
-if os.path.isfile('btstrip.py'):
+if os.path.isfile('/home/ubuntu/lr-hr-cr/btstrip.py'):
   import btstrip
   LED_COUNT = btstrip.LED_COUNT     
   LED_PIN1   = btstrip.LED_PIN1 
@@ -45,7 +107,7 @@ if os.path.isfile('btstrip.py'):
   LED_IN_SLOT = btstrip.LED_IN_SLOT
   N_SLOTS = btstrip.N_SLOTS
 
-if os.path.isfile('inputs.py'):
+if os.path.isfile('/home/ubuntu/lr-hr-cr/inputs.py'):
   import inputs
   IR_Sensor_1 = inputs.IR_Sensor_1
   IR_Sensor_2 = inputs.IR_Sensor_2
@@ -94,7 +156,7 @@ syellow_st=0
 configlabel = 'undefined'
   
 GPIO.setmode(GPIO.BCM)     #programming the GPIO by BCM pin numbers. (like PIN40 as GPIO21)
-GPIO.setwarnings(True)
+GPIO.setwarnings(False)
 channels = [LED_PIN1,LED_PIN2]
 GPIO.cleanup(channels)
 GPIO.setup (LED_PIN1,GPIO.OUT)
@@ -138,21 +200,55 @@ IR08_ST = IR08_ST + IR08_ST
 
 
 
-sleep(0.5)
+
+##### Strip Configuration
+
+strip1 = Adafruit_NeoPixel(LED_COUNT, LED_PIN1, LED_FREQ_HZ, LED_DMA, LED_INVERT, LED_BRIGHTNESS, LED_CHANNEL)
+strip2 = Adafruit_NeoPixel(LED_COUNT, LED_PIN2, LED_FREQ_HZ, LED_DMA, LED_INVERT, LED_BRIGHTNESS, 1)
+strip1.begin()
+strip2.begin()
+def begin_car():
+  for i in range (0,LED_COUNT):
+       strip1.setPixelColor(i, Color(255,255,255))
+       strip2.setPixelColor(i, Color(255,255,255))
+  strip1.show()
+  strip2.show()
+  time.sleep(0.1)
+begin_car()
+time.sleep(0.1)
+begin_car()
+time.sleep(0.1)  
+def wait_bt_Connection():
+  for i in range (0,LED_COUNT):
+   strip1.setPixelColor(i, Color(204,255,0))
+   strip2.setPixelColor(i, Color(204,255,0))
+   
+  strip1.show()
+  strip2.show()
+  time.sleep(1000/1000)
+  
+
+
 
 # Bluetooh Connection
 
-print "Waiting for Bluetooth connection..."
+
+
+
+print "      Waiting for Bluetooth connection..."
 
 server_socket=bluetooth.BluetoothSocket( bluetooth.RFCOMM )
 port = 1
 server_socket.bind(("",port))
 server_socket.listen(1)
 client_socket,address = server_socket.accept()
-print "Accepted connection from ",address
+wait_bt_Connection()
 
-sleep(0.5)
-print "Please configure car slots."
+print "      Accepted connection from ",address
+
+ 
+time.sleep(0.5)
+print "      Please configure car slots."
 
 
 def reg_var():
@@ -192,7 +288,11 @@ def carconfig():
    strip1.show()
    strip2.show()
    client_socket.send(data)
-   print ("Car Slot are configured as " )
+   print ("      Car Slot Configuration" )
+   print ("      " )
+   print ("      " )
+   print ("      " )
+   print ("      " )
 def sred():
    for i in range (scri,scre):
        strip1.setPixelColor(i, 0xFF0000)
@@ -275,7 +375,7 @@ def syellow():
    client_socket.send(data)
    
 def check_basket():
- print ("check_basket")  
+ print ("      check_basket")  
  res_red = sum(i for i in IR_RED)
  res_green = sum(i for i in IR_GREEN)
  res_blue = sum(i for i in IR_BLUE)
@@ -285,38 +385,58 @@ def check_basket():
  
  if (sred_st == 0):
   if res_red > 1:
-   print "Wrong Basket"
+   print "      Wrong Basket"
  if (sred_st == 1):
   if res_red > 1:
-   print "Correct Basket"
+   print "      Correct Basket"
  if (sgreen_st == 0):
   if res_green > 1:
-   print "Wrong Basket"
+   print "      Wrong Basket"
  if (sgreen_st == 1):
   if res_green > 1:
-   print "Correct Basket"  
+   print "      Correct Basket"  
  if (sblue_st == 0):
   if res_blue > 1:
-   print "Wrong Basket"
+   print "      Wrong Basket"
  if (sblue_st == 1):
   if res_blue > 1:
-   print "Correct Basket" 
+   print "      Correct Basket" 
  if (syellow_st == 0):
   if res_yellow > 1:
-   print "Wrong Basket"
+   print "      Wrong Basket"
  if (syellow_st == 1):
   if res_yellow > 1:
-   print "Correct Basket"
+   print "      Correct Basket"
  print res_red
  print res_green
  print res_blue
  print res_yellow
 
-strip1 = Adafruit_NeoPixel(LED_COUNT, LED_PIN1, LED_FREQ_HZ, LED_DMA, LED_INVERT, LED_BRIGHTNESS, LED_CHANNEL)
-strip2 = Adafruit_NeoPixel(LED_COUNT, LED_PIN2, LED_FREQ_HZ, LED_DMA, LED_INVERT, LED_BRIGHTNESS, 1)
-strip1.begin()
-strip2.begin()
 
+
+def wheel(pos):
+    """Generate rainbow colors across 0-255 positions."""
+    if pos < 85:
+        return Color(pos * 3, 255 - pos * 3, 0)
+    elif pos < 170:
+        pos -= 85
+        return Color(255 - pos * 3, 0, pos * 3)
+    else:
+        pos -= 170
+        return Color(0, pos * 3, 255 - pos * 3)
+
+def rainbow(strip, wait_ms=20, iterations=1):
+    """Draw rainbow that fades across all pixels at once."""
+    for j in range(256*iterations):
+        for i in range(strip.numPixels()):
+            strip.setPixelColor(i, wheel((i+j) & 255))
+        strip.show()
+        time.sleep(wait_ms/1000.0)
+
+#rainbow(strip1)
+#rainbow(strip2)
+
+				
 ################################
 # IR SENSORS
 ################################
@@ -361,9 +481,9 @@ def ir_slot08(channel):
 
 
 # if GPIO.input(16)==1:
-#  print "Open"
+#  print "      Open"
 #if GPIO.input(36)==1:
-# print "Open"
+# print "      Open"
 GPIO.add_event_detect (IR_Sensor_1, GPIO.RISING, callback=ir_slot01, bouncetime=IR_time) #IR1 IR2 Slot 1 PIN31
 GPIO.add_event_detect (IR_Sensor_2, GPIO.RISING, callback=ir_slot02, bouncetime=IR_time) #IR3 IR4 Slot 2 PIN33
 GPIO.add_event_detect (IR_Sensor_3, GPIO.RISING, callback=ir_slot03, bouncetime=IR_time) #IR5 IR6 Slot 2 PIN35
@@ -422,20 +542,29 @@ while 1:
   print('Button pressed')
   ir_slot08()      
  data = client_socket.recv(1024)
- print "Received: %s" % data
+ print "      Received: %s" % data
 
 
 #System Commnds
  if (data == "restart"):    #restart equipment
-  print ("Restart LC-HR-CR")
+  print ("       ")
+  print ("       ")
+  print ("       ")
+  print ("      Restart LC-CR")
+  print ("      Please wait about 45s")
+  print ("      ")
+  print ("      ")
+  print ("      ")
+  print ("      ")
+  print ("      ")
   os.system('systemctl reboot -i')
 
 #Global Commands  
  if (data == "quit"):
-   print ("Quit")
+   print ("      Quit")
    break
  if (data == "clear"):
-   print ("Clear")
+   print ("      Clear")
    clear()
  if (data == "reset"):    
    scri = 0  
@@ -446,11 +575,20 @@ while 1:
    scbe = 0
    scyi = 0 
    scye = 0
-   print ("Reset Car Configuration")
-
+   print ("      Reset Car Configuration")
+ if (data == "reload"):
+   print ("      Reload LR-CR")
+   print ("      Please wait...")
+   print ("      ")
+   clear()
+   os.system("systemctl restart bt-work")
 #Car configuration
- if (data == "cars01"):    
-  print ("R8-G0-B0-Y0")
+ if (data == "cars01"):  
+  print ("      ")
+  print ("      .----.----.----.----.")
+  print ("      | R8 | G0 | B0 | Y0 |")
+  print ("      .----.----.----.----.")
+  print ("      ")     
   scri = 0
   scre = scri + 7 + 8 * SLOT
   scgi = scre + 1
@@ -461,8 +599,12 @@ while 1:
   scye = scyi + 0 * SLOT
   configlabel = data
   carconfig()
- if (data == "cars02"):    
-  print ("R7-G1-B0-Y0")
+ if (data == "cars02"): 
+  print ("      ")
+  print ("      .----.----.----.----.")
+  print ("      | R7 | G1 | B0 | Y0 |")
+  print ("      .----.----.----.----.")
+  print ("      ")     
   scri = 0 * SLOT
   scre = scri + 6 + 7 * SLOT
   scgi = scre + 1
@@ -473,8 +615,12 @@ while 1:
   scye = scyi + 0 * SLOT
   configlabel = data
   carconfig()
- if (data == "cars03"):    
-  print ("R6-G2-B0-Y0")
+ if (data == "cars03"):  
+  print ("      ")
+  print ("      .----.----.----.----.")
+  print ("      | R6 | G2 | B0 | Y0 |")
+  print ("      .----.----.----.----.")
+  print ("      ")     
   scri = 0 * SLOT
   scre = scri + 5 + 6 * SLOT
   scgi = scre + 1
@@ -485,8 +631,12 @@ while 1:
   scye = scyi + 0 * SLOT
   configlabel = data
   carconfig()
- if (data == "cars04"):    
-  print ("R6-G1-B1-Y0")
+ if (data == "cars04"):  
+  print ("      ")
+  print ("      .----.----.----.----.")
+  print ("      | R6 | G1 | B1 | Y0 |")
+  print ("      .----.----.----.----.")
+  print ("      ")   
   scri = 0 * SLOT
   scre = scri + 5 + 6 * SLOT
   scgi = scre + 1
@@ -497,8 +647,12 @@ while 1:
   scye = scyi + 0 * SLOT
   configlabel = data
   carconfig()
- if (data == "cars05"):    
-  print ("R5-G3-B0-Y0")
+ if (data == "cars05"):  
+  print ("      ")
+  print ("      .----.----.----.----.")
+  print ("      | R5 | G3 | B0 | Y0 |")
+  print ("      .----.----.----.----.")
+  print ("      ") 
   scri = 0 * SLOT
   scre = scri + 4 + 5 * SLOT
   scgi = scre + 1
@@ -509,8 +663,12 @@ while 1:
   scye = scyi + 0 * SLOT
   configlabel = data
   carconfig()
- if (data == "cars06"):    
-  print ("R5-G2-B1-Y0")
+ if (data == "cars06"): 
+  print ("      ")
+  print ("      .----.----.----.----.")
+  print ("      | R5 | G2 | B1 | Y0 |")
+  print ("      .----.----.----.----.")
+  print ("      ")   
   scri = 0 * SLOT
   scre = scri + 4 + 5 * SLOT
   scgi = scre + 1
@@ -521,8 +679,12 @@ while 1:
   scye = scyi + 0 * SLOT
   configlabel = data
   carconfig()
- if (data == "cars07"):    
-  print ("R5-G1-B1-Y1")
+ if (data == "cars07"): 
+  print ("      ")
+  print ("      .----.----.----.----.")
+  print ("      | R5 | G1 | B1 | Y1 |")
+  print ("      .----.----.----.----.")
+  print ("      ")  
   scri = 0 * SLOT
   scre = scri + 4 + 5 * SLOT
   scgi = scre + 1
@@ -533,8 +695,12 @@ while 1:
   scye = scyi + 1 * SLOT
   configlabel = data
   carconfig()
- if (data == "cars08"):    
-  print ("R4-G4-B0-Y0")
+ if (data == "cars08"):  
+  print ("      ")
+  print ("      .----.----.----.----.")
+  print ("      | R4 | G4 | B2 0 Y0 |")
+  print ("      .----.----.----.----.")
+  print ("      ")  
   scri = 0 * SLOT
   scre = scri + 3 + 4 * SLOT
   scgi = scre + 1
@@ -545,8 +711,12 @@ while 1:
   scye = scyi + 0 * SLOT
   configlabel = data
   carconfig()
- if (data == "cars09"):    
-  print ("R4-G3-B1-Y0")
+ if (data == "cars09"):   
+  print ("      ")
+  print ("      .----.----.----.----.")
+  print ("      | R4 | G3 | B1 | Y0 |")
+  print ("      .----.----.----.----.")
+  print ("      ")  
   scri = 0 * SLOT
   scre = scri + 3 + 4 * SLOT
   scgi = scre + 1
@@ -557,8 +727,12 @@ while 1:
   scye = scyi + 0 * SLOT
   configlabel = data
   carconfig()
- if (data == "cars10"):    
-  print ("R4-G2-B2-Y0")
+ if (data == "cars10"):
+  print ("      ")
+  print ("      .----.----.----.----.")
+  print ("      | R4 | G2 | B2 | Y0 |")
+  print ("      .----.----.----.----.")
+  print ("      ") 
   scri = 0 * SLOT
   scre = scri + 3 + 4 * SLOT
   scgi = scre + 1
@@ -569,8 +743,12 @@ while 1:
   scye = scyi + 0 * SLOT
   configlabel = data
   carconfig()
- if (data == "cars11"):    
-  print ("R4-G2-B1-Y1")
+ if (data == "cars11"): 
+  print ("      ")
+  print ("      .----.----.----.----.")
+  print ("      | R4 | G2 | B1 | Y1 |")
+  print ("      .----.----.----.----.")
+  print ("      ")   
   scri = 0 * SLOT
   scre = scri + 3 + 4 * SLOT
   scgi = scre + 1
@@ -582,7 +760,11 @@ while 1:
   configlabel = data
   carconfig()
  if (data == "cars12"):    
-   print ("R3-G3-B2-Y0")
+   print ("      ")
+   print ("      .----.----.----.----.")
+   print ("      | R3 | G3 | B2 | Y0 |")
+   print ("      .----.----.----.----.")
+   print ("      ")    
    scri = 0 * SLOT
    scre = scri + 2 + 3 * SLOT
    scgi = scre + 1
@@ -594,7 +776,11 @@ while 1:
    configlabel = data
    carconfig() 
  if (data == "cars13"):    
-   print ("R3-G3-B1-Y1")
+   print ("      ")
+   print ("      .----.----.----.----.")
+   print ("      | R3 | G3 | B1 | Y1 |")
+   print ("      .----.----.----.----.")
+   print ("      ")    
    scri = 0 * SLOT
    scre = scri + 2 + 3 * SLOT
    scgi = scre + 1
@@ -606,7 +792,11 @@ while 1:
    configlabel = data
    carconfig()
  if (data == "cars14"):    
-   print ("R3-G2-B2-Y1")
+   print ("      ")
+   print ("      .----.----.----.----.")
+   print ("      | R3 | G2 | B2 | Y1 |")
+   print ("      .----.----.----.----.")
+   print ("      ")   
    scri = 0 * SLOT
    scre = scri + 2 + 3 * SLOT
    scgi = scre + 1
@@ -618,7 +808,11 @@ while 1:
    configlabel = data
    carconfig() 
  if (data == "cars15"):    
-   print ("R2-G2-B2-Y2")
+   print ("      ")
+   print ("      .----.----.----.----.")
+   print ("      | R2 | G2 | B2 | Y2 |")
+   print ("      .----.----.----.----.")
+   print ("      ")
    scri = 0 * SLOT
    scre = scri + 1 + 2 * SLOT
    scgi = scre + 1
@@ -632,8 +826,7 @@ while 1:
    IR_BLUE = [IR05_ST,IR06_ST]
    IR_YELLOW = [IR07_ST,IR08_ST]
    configlabel = data
-   carconfig()  
-   print IR_BLUE
+   carconfig()
 
 ######
  if (data == "start"):    

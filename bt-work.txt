@@ -1,14 +1,13 @@
 [Unit]
 Description=LR CAR BT Service
-After=btscript.service
+After=btscript
 Conflicts=getty@tty1.service
 
 [Service]
-Type=idle
+Type=simple
 ExecStartPre=/bin/sleep 5
-ExecStart=/usr/bin/python /home/ubuntu/lr-hr-cr/bt-work.py 3>&1 1>>/var/log/bt-work-py.log 2>&1
+ExecStart=/usr/bin/python /home/ubuntu/lr-hr-cr/bt-work.py
 StandardInput=tty-force
-Restart=always
 
 [Install]
 WantedBy=multi-user.target
