@@ -68,3 +68,12 @@ sudo chmod 664 /etc/systemd/system/bt-work.service
 sudo systemctl daemon-reload
 sudo systemctl enable bt-work.service
 
+
+
+
+#######################################################################
+BLE
+
+sudo pip install bluepy
+sudo pip install pexpect
+
