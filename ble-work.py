@@ -227,14 +227,14 @@ def fin_car():
 time.sleep(500/1000)
 
 
-def wait_bt_Connection():
-  for i in range (0,LED_COUNT):
-   strip1.setPixelColor(i, Color(204,255,0))
-   strip2.setPixelColor(i, Color(204,255,0))
-   
-  strip1.show()
-  strip2.show()
-  time.sleep(1000/1000)
+#def wait_bt_Connection():
+#  for i in range (0,LED_COUNT):
+#   strip1.setPixelColor(i, Color(204,255,0))
+#   strip2.setPixelColor(i, Color(204,255,0))
+#   
+#  strip1.show()
+#  strip2.show()
+#  time.sleep(1000/1000)
   
 
 
@@ -298,7 +298,7 @@ def carconfig():
        strip2.setPixelColor(i, 0xFFFF00)
    strip1.show()
    strip2.show()
-   client_socket.send(data)
+   #client_socket.send(data)
    print ("      Car Slot Configuration" )
    print ("      " )
    print ("      " )
@@ -962,7 +962,7 @@ class CarTypeCharacteristic(Characteristic):
         val =("%s" % ''.join([str(v) for v in value]))
         #print("value:%s" % ''.join([str(val) for v in value]))
         if val == "cars15":
-         cars15()
+         cars15(1)
          #self.service.set_farenheit(False)
          print "correcto"
          print val
@@ -1522,6 +1522,23 @@ else:
 #   configlabel = data
 #   carconfig()
 #
+def cars15():    
+   print ("      ")
+   print ("      .----.----.----.----.")
+   print ("      | R2 | G2 | B2 | Y2 |")
+   print ("      .----.----.----.----.")
+   print ("      ")
+   scri = 0 * SLOT
+   scre = scri + 1 + 2 * SLOT
+   scgi = scre + 1
+   scge = scgi + 1 + 2 * SLOT
+   scbi = scge + 1
+   scbe = scbi + 1 + 2 * SLOT
+   scyi = scbe + 1
+   scye = scyi + 1 + 2 * SLOT
+   slot_type = 2222
+   configlabel = data
+   carconfig()
 #######
 # if (data == "start"):    
 #   clear()
