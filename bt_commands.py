@@ -37,52 +37,27 @@ import argparse
 #
 #for filename in logfiles:
 #    print filename
+class lrcommands():
+	def cars15(conf):    
+	 print ("      ")
+	 print ("      .----.----.----.----.")
+	 print ("      | R2 | G2 | B2 | Y2 |")
+	 print ("      .----.----.----.----.")
+	 print ("      ")
+	 scri = 0 * SLOT
+	 scre = scri + 1 + 2 * SLOT
+	 scgi = scre + 1
+	 scge = scgi + 1 + 2 * SLOT
+	 scbi = scge + 1
+	 scbe = scbi + 1 + 2 * SLOT
+	 scyi = scbe + 1
+	 scye = scyi + 1 + 2 * SLOT
+	 slot_type = 2222
+	 configlabel = "data"
+	 carconfig()
+	def clear_screen(): 
+	 _ = os.system('clear') 
 
-def clear_screen(): 
- _ = os.system('clear') 
-
-time.sleep(0.5)
-clear_screen()
-print "       "
-print "       "
-print "       "
-print "                                ##############################################"
-print "                                #            Neopixel Lusorede               #"
-print "                                #            Version: 0.04                   #"
-print "                                #                Beta Test                   #"
-print "                                #               development                  #"
-print "                                #                                            #"
-print "                                #           ",socket.gethostname(),"            #"
-print "                                #                                            #"
-print "                                #           suporte@lusorede.pt              #"
-print "                                #                                            #"
-print "                                ##############################################"
-print "       "
-print "       "
-print "       "
-print "       "
-print "       "
-print "                                 #           #       #    ########    ########    ########    ########    #####       ########    "
-print "                                 #           #       #    #           #      #    #      #    #           #     #     #           "
-print "                                 #           #       #    #           #      #    #      #    #           #      #    #           "
-print "                                 #           #       #    #           #      #    #      #    #           #      #    #           "
-print "                                 #           #       #    ########    #      #    ########    ########    #      #    ########    "
-print "                                 #           #       #           #    #      #    #   #       #           #      #    #           "
-print "                                 #           #       #           #    #      #    #    #      #           #      #    #           "
-print "                                 #           #       #           #    #      #    #     #     #           #     #     #           "
-print "                                 ########    #########    ########    ########    #      #    ########    ######      ########    "
-print "       "
-print "       "
-print "       "
-print "       "
-print "       "
-print "                                 LR-CR staring..."
-print "                                 Please waiting.."
-print "       "
-print "       "
-print "       "
-print "       "
-print "       "
 if os.path.isfile('/home/ubuntu/lr-hr-cr/btvars.py'):
   import btvars
   scri = btvars.scri 
@@ -124,17 +99,7 @@ if os.path.isfile('/home/ubuntu/lr-hr-cr/inputs.py'):
   Restart_time = inputs.Restart_time
   Pair_time = inputs.Pair_time
   
-ir_slot01_n = 0  
-ir_slot02_n = 0  
-ir_slot03_n = 0  
-ir_slot04_n = 0  
-ir_slot05_n = 0  
-ir_slot06_n = 0  
-ir_slot07_n = 0  
-ir_slot08_n = 0  
-ir_wb_n = 0  
-ir_wc_n = 0  
-
+  
 
 
 #LED_COUNT      = 59      # Number of LED pixels.
@@ -239,27 +204,21 @@ def wait_bt_Connection():
 
 
 
-print "      Waiting for Bluetooth connection..."
-
-
-
-
-
-server_socket=socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-server_socket.bind(('localhost', 50000))
-server_socket.listen(1)
-client_socket,address = server_socket.accept()
-wait_bt_Connection()
-#server_st_socket=socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-#server_st_socket.bind(('localhost', 50001))
-#server_st_socket.listen(1)
-#client_st_socket,address1 = server_st_socket.accept()
-print "      Accepted connection from ",address
-add_con = str(address) + "_connect"
-time.sleep(10/1000)
-client_socket.send(add_con)
- 
-time.sleep(0.5)
+#print "      Waiting for Bluetooth connection..."
+#
+#server_socket=bluetooth.BluetoothSocket( bluetooth.RFCOMM )
+#port = 1
+#server_socket.bind(("",port))
+#server_socket.listen(1)
+#client_socket,address = server_socket.accept()
+#wait_bt_Connection()
+#
+#print "      Accepted connection from ",address
+#add_con = str(address) + "_connect"
+#time.sleep(10/1000)
+#client_socket.send(add_con)
+# 
+#time.sleep(0.5)
 print "      Please configure car slots."
 
 
@@ -300,9 +259,6 @@ def carconfig():
    strip1.show()
    strip2.show()
    client_socket.send(data)
-   #client_socket.close()
-   
-   
    print ("      Car Slot Configuration" )
    print ("      " )
    print ("      " )
@@ -401,38 +357,38 @@ def rainbow(strip, wait_ms=20, iterations=1):
 ################################
 
 def ir_slot01(channel):
- #client_socket.send('ir_slot01')
+ client_socket.send('ir_slot01')
  ir_slot01_t(slot_type,slot_active)
 def ir_slot02(channel):
- #client_socket.send('ir_slot02')
+ client_socket.send('ir_slot02')
  ir_slot02_t(slot_type,slot_active)
 def ir_slot03(channel):
- #client_socket.send('ir_slot03')
+ client_socket.send('ir_slot03')
  ir_slot03_t(slot_type,slot_active)
 def ir_slot04(channel):
- #client_socket.send('ir_slot04')
+ client_socket.send('ir_slot04')
  ir_slot04_t(slot_type,slot_active)
 def ir_slot05(channel):
- #client_socket.send('ir_slot05')
+ client_socket.send('ir_slot05')
  ir_slot05_t(slot_type,slot_active)
 def ir_slot06(channel):
- #client_socket.send('ir_slot06')
+ client_socket.send('ir_slot06')
  ir_slot06_t(slot_type,slot_active)
 def ir_slot07(channel):
- #client_socket.send('ir_slot07')
+ client_socket.send('ir_slot07')
  ir_slot07_t(slot_type,slot_active)
 def ir_slot08(channel):
- #client_socket.send('ir_slot08')
+ client_socket.send('ir_slot08')
  ir_slot08_t(slot_type,slot_active)
 def ir_slot01_t(slot_type,slot_active):
  n=0
  if slot_type == 9999:
   print "      Please define Car Slot Type"
-  #client_socket.send('define_car')
+  client_socket.send('define_car')
  time.sleep(10/1000) 
  if slot_active == 0000:
   print "      Please Start Shopping"
-  #client_socket.send('define_slot_active')
+  client_socket.send('define_slot_active')
   time.sleep(10/1000)
  if slot_active == 1000:
   if slot_type == 8000 or slot_type == 7100 or slot_type == 6200 or slot_type == 6110 or slot_type == 5300 or slot_type == 5210 or slot_type == 5111 or slot_type == 4400 or slot_type == 4310 or slot_type == 4220 or slot_type == 4211 or slot_type == 3320 or slot_type == 3311 or slot_type == 3221 or slot_type == 2222:
@@ -448,23 +404,21 @@ def ir_slot01_t(slot_type,slot_active):
 	n = 1 
  if n == 1:
   print "      Correct Basket"
-  #client_socket.send('correct_basket')
+  client_socket.send('correct_basket')
   time.sleep(10/1000)
-  ir_slot01_st = 1
  else:
 	 print "      Wrong Basket"
-	 #client_socket.send('wrong_basket')
+	 client_socket.send('wrong_basket')
 	 time.sleep(10/1000) 
-	 ir_slot01_st = 0
 def ir_slot02_t(slot_type,slot_active):
  n=0
  if slot_type == 9999:
   print "      Please define Car Slot Type"
-  #client_socket.send('define_car')
+  client_socket.send('define_car')
  time.sleep(10/1000) 
  if slot_active == 0000:
   print "      Please Start Shopping"
-  #client_socket.send('define_slot_active')
+  client_socket.send('define_slot_active')
   time.sleep(10/1000)
  if slot_active == 1000:
   if slot_type == 8000 or slot_type == 7100 or slot_type == 6200 or slot_type == 6110 or slot_type == 5300 or slot_type == 5210 or slot_type == 5111 or slot_type == 4400 or slot_type == 4310 or slot_type == 4220 or slot_type == 4211 or slot_type == 3320 or slot_type == 3311 or slot_type == 3221 or slot_type == 2222:
@@ -480,21 +434,21 @@ def ir_slot02_t(slot_type,slot_active):
 	n = 1 
  if n == 1:
   print "      Correct Basket"
-  #client_socket.send('correct_basket')
+  client_socket.send('correct_basket')
   time.sleep(10/1000)
  else:
 	 print "      Wrong Basket"
-	 #client_socket.send('wrong_basket')
+	 client_socket.send('wrong_basket')
 	 time.sleep(10/1000) 
 def ir_slot03_t(slot_type,slot_active):
  n=0
  if slot_type == 9999:
   print "      Please define Car Slot Type"
-  #client_socket.send('define_car')
+  client_socket.send('define_car')
  time.sleep(10/1000) 
  if slot_active == 0000:
   print "      Please Start Shopping"
-  #client_socket.send('define_slot_active')
+  client_socket.send('define_slot_active')
   time.sleep(10/1000)
  if slot_active == 1000:
   if slot_type == 8000 or slot_type == 7100 or slot_type == 6200 or slot_type == 6110 or slot_type == 5300 or slot_type == 5210 or slot_type == 5111 or slot_type == 4400 or slot_type == 4310 or slot_type == 4220 or slot_type == 4211 or slot_type == 3320 or slot_type == 3311 or slot_type == 3221:
@@ -510,21 +464,21 @@ def ir_slot03_t(slot_type,slot_active):
 	n = 1 
  if n == 1:
   print "      Correct Basket"
-  #client_socket.send('correct_basket')
+  client_socket.send('correct_basket')
   time.sleep(10/1000)
  else:
 	 print "      Wrong Basket"
-	 #client_socket.send('wrong_basket')
+	 client_socket.send('wrong_basket')
 	 time.sleep(10/1000) 
 def ir_slot04_t(slot_type,slot_active):
  n=0
  if slot_type == 9999:
   print "      Please define Car Slot Type"
-  #client_socket.send('define_car')
+  client_socket.send('define_car')
  time.sleep(10/1000) 
  if slot_active == 0000:
   print "      Please Start Shopping"
-  #client_socket.send('define_slot_active')
+  client_socket.send('define_slot_active')
   time.sleep(10/1000)
  if slot_active == 1000:
   if slot_type == 8000 or slot_type == 7100 or slot_type == 6200 or slot_type == 6110 or slot_type == 5300 or slot_type == 5210 or slot_type == 5111 or slot_type == 4400 or slot_type == 4310 or slot_type == 4220 or slot_type == 4211:
@@ -540,21 +494,21 @@ def ir_slot04_t(slot_type,slot_active):
 	n = 1 
  if n == 1:
   print "      Correct Basket"
-  #client_socket.send('correct_basket')
+  client_socket.send('correct_basket')
   time.sleep(10/1000)
  else:
 	 print "      Wrong Basket"
-	 #client_socket.send('wrong_basket')
+	 client_socket.send('wrong_basket')
 	 time.sleep(10/1000) 
 def ir_slot05_t(slot_type,slot_active):
  n=0
  if slot_type == 9999:
   print "      Please define Car Slot Type"
-  #client_socket.send('define_car')
+  client_socket.send('define_car')
  time.sleep(10/1000) 
  if slot_active == 0000:
   print "      Please Start Shopping"
-  #client_socket.send('define_slot_active')
+  client_socket.send('define_slot_active')
   time.sleep(10/1000)
  if slot_active == 1000:
   if slot_type == 8000 or slot_type == 7100 or slot_type == 6200 or slot_type == 6110 or slot_type == 5300 or slot_type == 5210 or slot_type == 5111:
@@ -570,23 +524,21 @@ def ir_slot05_t(slot_type,slot_active):
 	n = 1 
  if n == 1:
   print "      Correct Basket"
-  #client_socket.send('correct_basket')
+  client_socket.send('correct_basket')
   time.sleep(10/1000)
  else:
 	 print "      Wrong Basket"
-	 #client_socket.send('wrong_basket')
+	 client_socket.send('wrong_basket')
 	 time.sleep(10/1000)
 def ir_slot06_t(slot_type,slot_active):
  n=0
- global ir_slot06_n
- ir_slot06_n = ir_slot06_n + 1
  if slot_type == 9999:
   print "      Please define Car Slot Type"
-  #client_socket.send('define_car')
+  client_socket.send('define_car')
  time.sleep(10/1000) 
  if slot_active == 0000:
   print "      Please Start Shopping"
-  #client_socket.send('define_slot_active')
+  client_socket.send('define_slot_active')
   time.sleep(10/1000)
  if slot_active == 1000:
   if slot_type == 8000 or slot_type == 7100 or slot_type == 6200 or slot_type == 6110:
@@ -602,21 +554,21 @@ def ir_slot06_t(slot_type,slot_active):
 	n = 1 
  if n == 1:
   print "      Correct Basket"
-  #client_socket.send('correct_basket')
+  client_socket.send('correct_basket')
   time.sleep(10/1000)
  else:
 	 print "      Wrong Basket"
-	 #client_socket.send('wrong_basket')
+	 client_socket.send('wrong_basket')
 	 time.sleep(10/1000)
 def ir_slot07_t(slot_type,slot_active):
  n=0
  if slot_type == 9999:
   print "      Please define Car Slot Type"
-  #client_socket.send('define_car')
+  client_socket.send('define_car')
  time.sleep(10/1000) 
  if slot_active == 0000:
   print "      Please Start Shopping"
-  #client_socket.send('define_slot_active')
+  client_socket.send('define_slot_active')
   time.sleep(10/1000)
  if slot_active == 1000:
   if slot_type == 8000 or slot_type == 7100:
@@ -632,21 +584,21 @@ def ir_slot07_t(slot_type,slot_active):
 	n = 1 
  if n == 1:
   print "      Correct Basket"
-  #client_socket.send('correct_basket')
+  client_socket.send('correct_basket')
   time.sleep(10/1000)
  else:
 	 print "      Wrong Basket"
-	 #client_socket.send('wrong_basket')
+	 client_socket.send('wrong_basket')
 	 time.sleep(10/1000)  
 def ir_slot08_t(slot_type,slot_active):
  n=0
  if slot_type == 9999:
   print "      Please define Car Slot Type"
-  #client_socket.send('define_car')
+  client_socket.send('define_car')
  time.sleep(10/1000) 
  if slot_active == 0000:
   print "      Please Start Shopping"
-  #client_socket.send('define_slot_active')
+  client_socket.send('define_slot_active')
   time.sleep(10/1000)
  if slot_active == 1000:
   if slot_type == 8000:
@@ -662,14 +614,12 @@ def ir_slot08_t(slot_type,slot_active):
 	n = 1 
  if n == 1:
   print "      Correct Basket"
-  #client_socket.send('correct_basket')
+  client_socket.send('correct_basket')
   time.sleep(10/1000)
  else:
 	 print "      Wrong Basket"
-	 #client_socket.send('wrong_basket')
+	 client_socket.send('wrong_basket')
 	 time.sleep(10/1000)  
-
-
 
 
 # if GPIO.input(16)==1:
@@ -710,424 +660,387 @@ GPIO.add_event_detect (I_Pair, GPIO.RISING, callback=bt_pair, bouncetime=Pair_ti
 
 
 
-while 1:
- data = client_socket.recv(1024)
- if not data:
-  #break
-  time.sleep(0.1)
- print "      Received: %s" % data
-#System Commnds
- if (data == "restart"):    #restart equipment
-  print ("       ")
-  print ("       ")
-  print ("       ")
-  print ("      Restart LC-CR")
-  print ("      Please wait about 45s")
-  print ("      ")
-  print ("      ")
-  print ("      ")
-  print ("      ")
-  print ("      ")
-  os.system('systemctl reboot -i')
+#while 1:
+    
+  
+  
+data = "lixo"
+ 
+ 
 
-#Global Commands  
- if (data == "quit"):
-   print ("      Quit")
-   break
- if (data == "clear"):
-   print ("      Clear")
-   clear()
- if (data == "reset"):    
-   scri = 0  
-   scre = 0
-   scgi = 0  
-   scge = 0
-   scbi = 0 
-   scbe = 0
-   scyi = 0 
-   scye = 0
-   print ("      Reset Car Configuration")
- if (data == "reload"):
-   print ("      Reload LR-CR")
-   print ("      Please wait...")
-   print ("      ")
-   clear()
-   os.system("systemctl restart bt-work")
-#Car configuration
- if (data == "cars01"):  
+
+#data = client_socket.recv(1024)
+#print "      Received: %s" % data
+##System Commnds
+if (data == "restart"):    #restart equipment
+ print ("       ")
+ print ("       ")
+ print ("       ")
+ print ("      Restart LC-CR")
+ print ("      Please wait about 45s")
+ print ("      ")
+ print ("      ")
+ print ("      ")
+ print ("      ")
+ print ("      ")
+ os.system('systemctl reboot -i')
+
+###############Global Commands  
+###if (data == "quit"):
+###  print ("      Quit")
+###  break
+if (data == "clear"):
+  print ("      Clear")
+  clear()
+if (data == "reset"):    
+  scri = 0  
+  scre = 0
+  scgi = 0  
+  scge = 0
+  scbi = 0 
+  scbe = 0
+  scyi = 0 
+  scye = 0
+  print ("      Reset Car Configuration")
+if (data == "reload"):
+  print ("      Reload LR-CR")
+  print ("      Please wait...")
+  print ("      ")
+  clear()
+  os.system("systemctl restart bt-work")
+###########Car configuration
+if (data == "cars01"):  
+ print ("      ")
+ print ("      .----.----.----.----.")
+ print ("      | R8 | G0 | B0 | Y0 |")
+ print ("      .----.----.----.----.")
+ print ("      ")     
+ scri = 0
+ scre = scri + 7 + 8 * SLOT
+ scgi = scre + 1
+ scge = scgi + 0 * SLOT
+ scbi = scge + 1
+ scbe = scbi + 0 * SLOT
+ scyi = scbe + 1
+ scye = scyi + 0 * SLOT
+ slot_type = 8000
+ configlabel = data
+ carconfig()
+if (data == "cars02"): 
+ print ("      ")
+ print ("      .----.----.----.----.")
+ print ("      | R7 | G1 | B0 | Y0 |")
+ print ("      .----.----.----.----.")
+ print ("      ")     
+ scri = 0 * SLOT
+ scre = scri + 6 + 7 * SLOT
+ scgi = scre + 1
+ scge = scgi + 1 * SLOT
+ scbi = scge + 1
+ scbe = scbi + 0 * SLOT
+ scyi = scbe + 1
+ scye = scyi + 0 * SLOT
+ slot_type = 7100
+ configlabel = data
+ carconfig()
+if (data == "cars03"):  
+ print ("      ")
+ print ("      .----.----.----.----.")
+ print ("      | R6 | G2 | B0 | Y0 |")
+ print ("      .----.----.----.----.")
+ print ("      ")     
+ scri = 0 * SLOT
+ scre = scri + 5 + 6 * SLOT
+ scgi = scre + 1
+ scge = scgi + 1 + 2 * SLOT
+ scbi = scge + 1
+ scbe = scbi + 0 * SLOT
+ scyi = scbe + 1
+ scye = scyi + 0 * SLOT
+ slot_type = 6200
+ configlabel = data
+ carconfig()
+if (data == "cars04"):  
+ print ("      ")
+ print ("      .----.----.----.----.")
+ print ("      | R6 | G1 | B1 | Y0 |")
+ print ("      .----.----.----.----.")
+ print ("      ")   
+ scri = 0 * SLOT
+ scre = scri + 5 + 6 * SLOT
+ scgi = scre + 1
+ scge = scgi + 1 * SLOT
+ scbi = scge + 1
+ scbe = scbi + 1 * SLOT
+ scyi = scbe + 1
+ scye = scyi + 0 * SLOT
+ slot_type = 6110
+ configlabel = data
+ carconfig()
+if (data == "cars05"):  
+ print ("      ")
+ print ("      .----.----.----.----.")
+ print ("      | R5 | G3 | B0 | Y0 |")
+ print ("      .----.----.----.----.")
+ print ("      ") 
+ scri = 0 * SLOT
+ scre = scri + 4 + 5 * SLOT
+ scgi = scre + 1
+ scge = scgi + 2 + 3 * SLOT
+ scbi = scge + 1
+ scbe = scbi + 0 * SLOT
+ scyi = scbe + 1
+ scye = scyi + 0 * SLOT
+ slot_type = 5300
+ configlabel = data
+ carconfig()
+if (data == "cars06"): 
+ print ("      ")
+ print ("      .----.----.----.----.")
+ print ("      | R5 | G2 | B1 | Y0 |")
+ print ("      .----.----.----.----.")
+ print ("      ")   
+ scri = 0 * SLOT
+ scre = scri + 4 + 5 * SLOT
+ scgi = scre + 1
+ scge = scgi + 1 + 2 * SLOT
+ scbi = scge + 1
+ scbe = scbi + 0 + 1 * SLOT
+ scyi = scbe + 1
+ scye = scyi + 0 * SLOT
+ slot_type = 5210
+ configlabel = data
+ carconfig()
+if (data == "cars07"): 
+ print ("      ")
+ print ("      .----.----.----.----.")
+ print ("      | R5 | G1 | B1 | Y1 |")
+ print ("      .----.----.----.----.")
+ print ("      ")  
+ scri = 0 * SLOT
+ scre = scri + 4 + 5 * SLOT
+ scgi = scre + 1
+ scge = scgi + 1 * SLOT
+ scbi = scge + 1
+ scbe = scbi + 1 * SLOT
+ scyi = scbe + 1
+ scye = scyi + 1 * SLOT
+ slot_type = 5111
+ configlabel = data
+ carconfig()
+if (data == "cars08"):  
+ print ("      ")
+ print ("      .----.----.----.----.")
+ print ("      | R4 | G4 | B0 | Y0 |")
+ print ("      .----.----.----.----.")
+ print ("      ")  
+ scri = 0 * SLOT
+ scre = scri + 3 + 4 * SLOT
+ scgi = scre + 1
+ scge = scgi + 3 + 4 * SLOT
+ scbi = scge + 1
+ scbe = scbi + 0 * SLOT
+ scyi = scbe + 1
+ scye = scyi + 0 * SLOT
+ slot_type = 4400
+ configlabel = data
+ carconfig()
+if (data == "cars09"):   
+ print ("      ")
+ print ("      .----.----.----.----.")
+ print ("      | R4 | G3 | B1 | Y0 |")
+ print ("      .----.----.----.----.")
+ print ("      ")  
+ scri = 0 * SLOT
+ scre = scri + 3 + 4 * SLOT
+ scgi = scre + 1
+ scge = scgi + 2 + 3 * SLOT
+ scbi = scge + 1
+ scbe = scbi + 1 * SLOT
+ scyi = scbe + 1
+ scye = scyi + 0 * SLOT
+ slot_type = 4310
+ configlabel = data
+ carconfig()
+if (data == "cars10"):
+ print ("      ")
+ print ("      .----.----.----.----.")
+ print ("      | R4 | G2 | B2 | Y0 |")
+ print ("      .----.----.----.----.")
+ print ("      ") 
+ scri = 0 * SLOT
+ scre = scri + 3 + 4 * SLOT
+ scgi = scre + 1
+ scge = scgi + 1 + 2 * SLOT
+ scbi = scge + 1
+ scbe = scbi + 1 + 2 * SLOT
+ scyi = scbe + 1
+ scye = scyi + 0 * SLOT
+ slot_type = 4220
+ configlabel = data
+ carconfig()
+if (data == "cars11"): 
+ print ("      ")
+ print ("      .----.----.----.----.")
+ print ("      | R4 | G2 | B1 | Y1 |")
+ print ("      .----.----.----.----.")
+ print ("      ")   
+ scri = 0 * SLOT
+ scre = scri + 3 + 4 * SLOT
+ scgi = scre + 1
+ scge = scgi + 1 + 2 * SLOT
+ scbi = scge + 1
+ scbe = scbi + 1 * SLOT
+ scyi = scbe + 1
+ scye = scyi + 1 * SLOT
+ slot_type = 4211
+ configlabel = data
+ carconfig()
+if (data == "cars12"):    
   print ("      ")
   print ("      .----.----.----.----.")
-  print ("      | R8 | G0 | B0 | Y0 |")
+  print ("      | R3 | G3 | B2 | Y0 |")
   print ("      .----.----.----.----.")
-  print ("      ")     
-  scri = 0
-  scre = scri + 7 + 8 * SLOT
-  scgi = scre + 1
-  scge = scgi + 0 * SLOT
-  scbi = scge + 1
-  scbe = scbi + 0 * SLOT
-  scyi = scbe + 1
-  scye = scyi + 0 * SLOT
-  slot_type = 8000
-  configlabel = data
-  carconfig()
- if (data == "cars02"): 
-  print ("      ")
-  print ("      .----.----.----.----.")
-  print ("      | R7 | G1 | B0 | Y0 |")
-  print ("      .----.----.----.----.")
-  print ("      ")     
+  print ("      ")    
   scri = 0 * SLOT
-  scre = scri + 6 + 7 * SLOT
-  scgi = scre + 1
-  scge = scgi + 1 * SLOT
-  scbi = scge + 1
-  scbe = scbi + 0 * SLOT
-  scyi = scbe + 1
-  scye = scyi + 0 * SLOT
-  slot_type = 7100
-  configlabel = data
-  carconfig()
- if (data == "cars03"):  
-  print ("      ")
-  print ("      .----.----.----.----.")
-  print ("      | R6 | G2 | B0 | Y0 |")
-  print ("      .----.----.----.----.")
-  print ("      ")     
-  scri = 0 * SLOT
-  scre = scri + 5 + 6 * SLOT
-  scgi = scre + 1
-  scge = scgi + 1 + 2 * SLOT
-  scbi = scge + 1
-  scbe = scbi + 0 * SLOT
-  scyi = scbe + 1
-  scye = scyi + 0 * SLOT
-  slot_type = 6200
-  configlabel = data
-  carconfig()
- if (data == "cars04"):  
-  print ("      ")
-  print ("      .----.----.----.----.")
-  print ("      | R6 | G1 | B1 | Y0 |")
-  print ("      .----.----.----.----.")
-  print ("      ")   
-  scri = 0 * SLOT
-  scre = scri + 5 + 6 * SLOT
-  scgi = scre + 1
-  scge = scgi + 1 * SLOT
-  scbi = scge + 1
-  scbe = scbi + 1 * SLOT
-  scyi = scbe + 1
-  scye = scyi + 0 * SLOT
-  slot_type = 6110
-  configlabel = data
-  carconfig()
- if (data == "cars05"):  
-  print ("      ")
-  print ("      .----.----.----.----.")
-  print ("      | R5 | G3 | B0 | Y0 |")
-  print ("      .----.----.----.----.")
-  print ("      ") 
-  scri = 0 * SLOT
-  scre = scri + 4 + 5 * SLOT
+  scre = scri + 2 + 3 * SLOT
   scgi = scre + 1
   scge = scgi + 2 + 3 * SLOT
   scbi = scge + 1
-  scbe = scbi + 0 * SLOT
+  scbe = scbi + 1 + 2 * SLOT
   scyi = scbe + 1
   scye = scyi + 0 * SLOT
-  slot_type = 5300
+  slot_type = 3320
   configlabel = data
-  carconfig()
- if (data == "cars06"): 
+  carconfig() 
+if (data == "cars13"):    
   print ("      ")
   print ("      .----.----.----.----.")
-  print ("      | R5 | G2 | B1 | Y0 |")
+  print ("      | R3 | G3 | B1 | Y1 |")
   print ("      .----.----.----.----.")
-  print ("      ")   
+  print ("      ")    
   scri = 0 * SLOT
-  scre = scri + 4 + 5 * SLOT
+  scre = scri + 2 + 3 * SLOT
   scgi = scre + 1
-  scge = scgi + 1 + 2 * SLOT
-  scbi = scge + 1
-  scbe = scbi + 0 + 1 * SLOT
-  scyi = scbe + 1
-  scye = scyi + 0 * SLOT
-  slot_type = 5210
-  configlabel = data
-  carconfig()
- if (data == "cars07"): 
-  print ("      ")
-  print ("      .----.----.----.----.")
-  print ("      | R5 | G1 | B1 | Y1 |")
-  print ("      .----.----.----.----.")
-  print ("      ")  
-  scri = 0 * SLOT
-  scre = scri + 4 + 5 * SLOT
-  scgi = scre + 1
-  scge = scgi + 1 * SLOT
+  scge = scgi + 2 + 3 * SLOT
   scbi = scge + 1
   scbe = scbi + 1 * SLOT
   scyi = scbe + 1
   scye = scyi + 1 * SLOT
-  slot_type = 5111
+  slot_type = 3311
   configlabel = data
   carconfig()
- if (data == "cars08"):  
+if (data == "cars14"):    
   print ("      ")
   print ("      .----.----.----.----.")
-  print ("      | R4 | G4 | B0 | Y0 |")
+  print ("      | R3 | G2 | B2 | Y1 |")
   print ("      .----.----.----.----.")
-  print ("      ")  
+  print ("      ")   
   scri = 0 * SLOT
-  scre = scri + 3 + 4 * SLOT
-  scgi = scre + 1
-  scge = scgi + 3 + 4 * SLOT
-  scbi = scge + 1
-  scbe = scbi + 0 * SLOT
-  scyi = scbe + 1
-  scye = scyi + 0 * SLOT
-  slot_type = 4400
-  configlabel = data
-  carconfig()
- if (data == "cars09"):   
-  print ("      ")
-  print ("      .----.----.----.----.")
-  print ("      | R4 | G3 | B1 | Y0 |")
-  print ("      .----.----.----.----.")
-  print ("      ")  
-  scri = 0 * SLOT
-  scre = scri + 3 + 4 * SLOT
-  scgi = scre + 1
-  scge = scgi + 2 + 3 * SLOT
-  scbi = scge + 1
-  scbe = scbi + 1 * SLOT
-  scyi = scbe + 1
-  scye = scyi + 0 * SLOT
-  slot_type = 4310
-  configlabel = data
-  carconfig()
- if (data == "cars10"):
-  print ("      ")
-  print ("      .----.----.----.----.")
-  print ("      | R4 | G2 | B2 | Y0 |")
-  print ("      .----.----.----.----.")
-  print ("      ") 
-  scri = 0 * SLOT
-  scre = scri + 3 + 4 * SLOT
+  scre = scri + 2 + 3 * SLOT
   scgi = scre + 1
   scge = scgi + 1 + 2 * SLOT
   scbi = scge + 1
   scbe = scbi + 1 + 2 * SLOT
   scyi = scbe + 1
-  scye = scyi + 0 * SLOT
-  slot_type = 4220
+  scye = scyi + 1 * SLOT
+  slot_type = 3221
   configlabel = data
-  carconfig()
- if (data == "cars11"): 
+  carconfig() 
+if (data == "cars15"):    
   print ("      ")
   print ("      .----.----.----.----.")
-  print ("      | R4 | G2 | B1 | Y1 |")
+  print ("      | R2 | G2 | B2 | Y2 |")
   print ("      .----.----.----.----.")
-  print ("      ")   
+  print ("      ")
   scri = 0 * SLOT
-  scre = scri + 3 + 4 * SLOT
+  scre = scri + 1 + 2 * SLOT
   scgi = scre + 1
   scge = scgi + 1 + 2 * SLOT
   scbi = scge + 1
-  scbe = scbi + 1 * SLOT
+  scbe = scbi + 1 + 2 * SLOT
   scyi = scbe + 1
-  scye = scyi + 1 * SLOT
-  slot_type = 4211
+  scye = scyi + 1 + 2 * SLOT
+  slot_type = 2222
   configlabel = data
   carconfig()
- if (data == "cars12"):    
-   print ("      ")
-   print ("      .----.----.----.----.")
-   print ("      | R3 | G3 | B2 | Y0 |")
-   print ("      .----.----.----.----.")
-   print ("      ")    
-   scri = 0 * SLOT
-   scre = scri + 2 + 3 * SLOT
-   scgi = scre + 1
-   scge = scgi + 2 + 3 * SLOT
-   scbi = scge + 1
-   scbe = scbi + 1 + 2 * SLOT
-   scyi = scbe + 1
-   scye = scyi + 0 * SLOT
-   slot_type = 3320
-   configlabel = data
-   carconfig() 
- if (data == "cars13"):    
-   print ("      ")
-   print ("      .----.----.----.----.")
-   print ("      | R3 | G3 | B1 | Y1 |")
-   print ("      .----.----.----.----.")
-   print ("      ")    
-   scri = 0 * SLOT
-   scre = scri + 2 + 3 * SLOT
-   scgi = scre + 1
-   scge = scgi + 2 + 3 * SLOT
-   scbi = scge + 1
-   scbe = scbi + 1 * SLOT
-   scyi = scbe + 1
-   scye = scyi + 1 * SLOT
-   slot_type = 3311
-   configlabel = data
-   carconfig()
- if (data == "cars14"):    
-   print ("      ")
-   print ("      .----.----.----.----.")
-   print ("      | R3 | G2 | B2 | Y1 |")
-   print ("      .----.----.----.----.")
-   print ("      ")   
-   scri = 0 * SLOT
-   scre = scri + 2 + 3 * SLOT
-   scgi = scre + 1
-   scge = scgi + 1 + 2 * SLOT
-   scbi = scge + 1
-   scbe = scbi + 1 + 2 * SLOT
-   scyi = scbe + 1
-   scye = scyi + 1 * SLOT
-   slot_type = 3221
-   configlabel = data
-   carconfig() 
- if (data == "cars15"):    
-   print ("      ")
-   print ("      .----.----.----.----.")
-   print ("      | R2 | G2 | B2 | Y2 |")
-   print ("      .----.----.----.----.")
-   print ("      ")
-   scri = 0 * SLOT
-   scre = scri + 1 + 2 * SLOT
-   scgi = scre + 1
-   scge = scgi + 1 + 2 * SLOT
-   scbi = scge + 1
-   scbe = scbi + 1 + 2 * SLOT
-   scyi = scbe + 1
-   scye = scyi + 1 + 2 * SLOT
-   slot_type = 2222
-   configlabel = data
-   carconfig()
 
-######
- if (data == "start"):    
-   clear()
-   slot_active = 0000
-   print configlabel + " shop start"
- if (data == "sred"):    
-   sred()
-   slot_active = 1000
-   print configlabel + " Red"
- if (data == "sblue"):    
-   sblue()
-   slot_active = 0010
-   print configlabel + " Blue"
- if (data == "sgreen"):    
-   sgreen()
-   slot_active = 0100
-   print configlabel + " Green"
- if (data == "syellow"):    
-   syellow()
-   slot_active = 0001
-   print configlabel + " Yellow"
- if (data == "finalized"):    
-   carconfig()
-   slot_active = 0000
-   print configlabel + " shop finalized"   
-   fin_car()
- if (data == "ir01_slot_st"):
-   ir_slot01_n = str(ir_slot01_n)
-   client_socket.send(ir_slot01_n)
- if (data == "ir02_slot_st"):
-   ir_slot02_n = str(ir_slot02_n)
-   client_socket.send(ir_slot02_n)
- if (data == "ir03_slot_st"):
-   ir_slot03_n = str(ir_slot03_n)
-   client_socket.send(ir_slot03_n)
- if (data == "ir04_slot_st"):
-   ir_slot04_n = str(ir_slot04_n)
-   client_socket.send(ir_slot04_n)
- if (data == "ir06_slot_st"):
-   ir_slot05_n = str(ir_slot05_n)
-   client_socket.send(ir_slot05_n)
- if (data == "ir06_slot_st"):
-   ir_slot06_n = str(ir_slot06_n)
-   client_socket.send(ir_slot06_n)
- if (data == "ir07_slot_st"):
-   ir_slot07_n = str(ir_slot07_n)
-   client_socket.send(ir_slot07_n)
- if (data == "ir08_slot_st"):
-   ir_slot08_n = str(ir_slot08_n)
-   client_socket.send(ir_slot08_n)
- if (data == "ir_wb_st"):
-   ir_wb_n = str(ir_wb_n)
-   client_socket.send(ir_wb_n)
- if (data == "ir_wb_st"):
-   ir_wb_n = str(ir_wb_n)
-   client_socket.send(ir_wb_n)
-
-
-
-
-
-
-
-
-
-   
-#Commands always from the mobile device
- if (data.startswith('caa',0 ,3)): 
-  carslotr = int(data[3]) * SLOT
-  carslotg = int(data[4]) * SLOT
-  carslotb = int(data[5]) * SLOT
-  carsloty = int(data[6]) * SLOT
-  scri = 0 
-  scre = carslotr
-  scgi = scre  
-  scge = scgi + carslotg
-  scbi = scge
-  scbe = scbi + carslotb
-  scyi = scbe
-  scye = scyi + carsloty
-  print (scri)
-  print (scre)
-  print (scgi)
-  print (scge)
-  print (scbi)
-  print (scbe)
-  print (scyi)
-  print (scye)
-  carconfig()
- if (data.startswith('rgb-',0 ,4)):    #rgb-255255255IIEE
+#####
+if (data == "start"):    
   clear()
-  carslotri = int(data[13:15])
-  carslotre = int(data[15:17])  
-  colorr = int(data[4:7])
-  colorg = int(data[7:10])
-  colorb = int(data[10:13])
-  print (carslotri)
-  print (carslotre)
-  print (colorr)
-  print (colorg)
-  print (colorb)
-  carslotcolor = 0
-  if (carslotcolor == "r"):
-   hexcolor = 0xFF0000
-  if (carslotcolor == "g"):
-   hexcolor = 0x00FF00
-  if (carslotcolor == "b"):
-   hexcolor = 0x0000FF
-  if (carslotcolor == "y"):
-   hexcolor = 0xFFFF00
-  for i in range (carslotri,carslotre):
-       strip1.setPixelColor(i,  Color(colorr,colorg,colorb))
-       strip2.setPixelColor(i,  Color(colorr,colorg,colorb))
-  strip1.show()
-  strip2.show()
-  
+  slot_active = 0000
+  print configlabel + " shop start"
+if (data == "sred"):    
+  sred()
+  slot_active = 1000
+  print configlabel + " Red"
+if (data == "sblue"):    
+  sblue()
+  slot_active = 0010
+  print configlabel + " Blue"
+if (data == "sgreen"):    
+  sgreen()
+  slot_active = 0100
+  print configlabel + " Green"
+if (data == "syellow"):    
+  syellow()
+  slot_active = 0001
+  print configlabel + " Yellow"
+if (data == "finalized"):    
+  carconfig()
+  slot_active = 0000
+  print configlabel + " shop finalized"   
+  fin_car()
 
-client_socket.close()
-server_socket.close()
-client_st_socket.close()
-server_st_socket.close()
+################Commands always from the mobile device
+if (data.startswith('caa',0 ,3)): 
+ carslotr = int(data[3]) * SLOT
+ carslotg = int(data[4]) * SLOT
+ carslotb = int(data[5]) * SLOT
+ carsloty = int(data[6]) * SLOT
+ scri = 0 
+ scre = carslotr
+ scgi = scre  
+ scge = scgi + carslotg
+ scbi = scge
+ scbe = scbi + carslotb
+ scyi = scbe
+ scye = scyi + carsloty
+ print (scri)
+ print (scre)
+ print (scgi)
+ print (scge)
+ print (scbi)
+ print (scbe)
+ print (scyi)
+ print (scye)
+ carconfig()
+if (data.startswith('rgb-',0 ,4)):    #rgb-255255255IIEE
+ clear()
+ carslotri = int(data[13:15])
+ carslotre = int(data[15:17])  
+ colorr = int(data[4:7])
+ colorg = int(data[7:10])
+ colorb = int(data[10:13])
+ print (carslotri)
+ print (carslotre)
+ print (colorr)
+ print (colorg)
+ print (colorb)
+ carslotcolor = 0
+ if (carslotcolor == "r"):
+  hexcolor = 0xFF0000
+ if (carslotcolor == "g"):
+  hexcolor = 0x00FF00
+ if (carslotcolor == "b"):
+  hexcolor = 0x0000FF
+ if (carslotcolor == "y"):
+  hexcolor = 0xFFFF00
+ for i in range (carslotri,carslotre):
+      strip1.setPixelColor(i,  Color(colorr,colorg,colorb))
+      strip2.setPixelColor(i,  Color(colorr,colorg,colorb))
+ strip1.show()
+ strip2.show()
+ 
+#client_socket.close()
+#server_socket.close()

@@ -1,0 +1,12 @@
+Service			| 00002A56-6c75-736f-7264-4c4349523036 		|				
+Read/Notify		| 00002A56-6c75-736f-7264-4c4349523031 		|		IR-Slot01		Binario
+Read/Notify		| 00002A56-6c75-736f-7264-4c4349523032 		|		IR-Slot02		Binario
+Read/Notify		| 00002A56-6c75-736f-7264-4c4349523033 		|		IR-Slot03		Binario
+Read/Notify		| 00002A56-6c75-736f-7264-4c4349523034 		|		IR-Slot04		Binario
+Read/Notify		| 00002A56-6c75-736f-7264-4c4349523035 		|		IR-Slot05		Binario
+Read/Notify		| 00002A56-6c75-736f-7264-4c4349523036 		|		IR-Slot06		Binario
+Read/Notify		| 00002A56-6c75-736f-7264-4c4349523037 		|		IR-Slot07		Binario
+Read/Notify		| 00002A56-6c75-736f-7264-4c4349523038 		|		IR-Slot08		Binario
+Read/Notify		| 00002A56-6c75-736f-7264-4c4349525742 		|		Wrong Basket	Binario
+Read/Notify		| 00002A56-6c75-736f-7264-4c4349524342 		|		Correct Basket	Binario		
+Write/Read		| 4c75736f-7265-6465-736f-6c726875676f 		|		Command	String

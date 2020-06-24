@@ -39,6 +39,7 @@ class Advertisement(dbus.service.Object):
         self.bus = BleTools.get_bus()
         self.ad_type = advertising_type
         self.local_name = None
+        self.local_sn = None
         self.service_uuids = None
         self.solicit_uuids = None
         self.manufacturer_data = None
@@ -71,7 +72,8 @@ class Advertisement(dbus.service.Object):
 
         if self.local_name is not None:
             properties["LocalName"] = dbus.String(self.local_name)
-
+        if self.local_sn is not None:
+            properties["serial_number_string"] = dbus.String(self.local_sn)
         return {LE_ADVERTISEMENT_IFACE: properties}
 
     def get_path(self):
@@ -101,7 +103,10 @@ class Advertisement(dbus.service.Object):
         if not self.local_name:
             self.local_name = ""
         self.local_name = dbus.String(name)
-
+    def add_local_sn(self, sn):
+        if not self.local_sn:
+            self.local_sn = ""
+        self.local_name = dbus.String(sn)
     @dbus.service.method(DBUS_PROP_IFACE,
                          in_signature="s",
                          out_signature="a{sv}")
