@@ -961,9 +961,9 @@ class CarTypeCharacteristic(Characteristic):
         #print("val:%s" % ''.join([str(v) for v in value]))
         val =("%s" % ''.join([str(v) for v in value]))
         #print("value:%s" % ''.join([str(val) for v in value]))
-        if val == "CARS15":
+        if val == "cars15":
          cars15()
-         self.service.set_farenheit(False)
+         #self.service.set_farenheit(False)
          print "correcto"
          print val
         else:
