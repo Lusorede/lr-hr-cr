@@ -91,6 +91,23 @@ sudo chmod 664 /etc/systemd/system/ble-work.service
 sudo systemctl daemon-reload
 sudo systemctl enable ble-work.service
 ###############################
+##      LR-CR CLEAN UP       ##
+###############################
+cd lr-hr-cr
+sudo rm -R 'Nova pasta'/
+sudo rm l* snd-blacklist.conf test.py
+sudo rm -R .g*
+sudo rm U* R* L*
+sudo rm 'ble-work - Cópia.py'
+sudo rm ble.py ble_test*
+sudo rm cockpit*
+sudo rm bt-work-*
+sudo rm 'cputemp - Cópia.py'
+sudo rm blinkatest.py bluethooth.cfg bluez_5.48-0ubuntu3.4.d*
+sudo rm  bt_commands.py
+sudo rm TO-DO
+
+
 sudo su
 apt-get update 
 apt-get upgrade -y
