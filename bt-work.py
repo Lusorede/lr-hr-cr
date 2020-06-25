@@ -40,7 +40,7 @@ import argparse
 
 def clear_screen(): 
  _ = os.system('clear') 
-
+	
 time.sleep(0.5)
 clear_screen()
 print "       "
@@ -171,12 +171,12 @@ configlabel = 'undefined'
   
 GPIO.setmode(GPIO.BCM)     #programming the GPIO by BCM pin numbers. (like PIN40 as GPIO21)
 GPIO.setwarnings(False)
-channels = [LED_PIN1,LED_PIN2]
+channels = [LED_PIN1,LED_PIN2,IR_Sensor_1,IR_Sensor_2,IR_Sensor_3,IR_Sensor_4,IR_Sensor_5,IR_Sensor_6,IR_Sensor_7,IR_Sensor_8,I_Restart,I_Pair]
 GPIO.cleanup(channels)
 GPIO.setup (LED_PIN1,GPIO.OUT)
 GPIO.output (LED_PIN1,0)
 GPIO.setup (LED_PIN2,GPIO.OUT)
-GPIO.output (LED_PIN2,1)
+GPIO.output (LED_PIN2,0)
 GPIO.setup (IR_Sensor_1,GPIO.IN,GPIO.PUD_UP)
 GPIO.setup (IR_Sensor_2,GPIO.IN,GPIO.PUD_UP)
 GPIO.setup (IR_Sensor_3,GPIO.IN,GPIO.PUD_UP)
@@ -203,7 +203,7 @@ GPIO.setup (I_Pair,GPIO.IN,GPIO.PUD_UP)
 ##### Strip Configuration
 
 strip1 = Adafruit_NeoPixel(LED_COUNT, LED_PIN1, LED_FREQ_HZ, LED_DMA, LED_INVERT, LED_BRIGHTNESS, LED_CHANNEL)
-strip2 = Adafruit_NeoPixel(LED_COUNT, LED_PIN2, LED_FREQ_HZ, LED_DMA, LED_INVERT, LED_BRIGHTNESS, 1)
+strip2 = Adafruit_NeoPixel(LED_COUNT, LED_PIN2, LED_FREQ_HZ, LED_DMA, LED_INVERT, LED_BRIGHTNESS, LED_CHANNEL)
 strip1.begin()
 strip2.begin()
 def begin_car():
@@ -288,6 +288,9 @@ def carconfig():
    for i in range (scri,scre):
        strip1.setPixelColor(i, 0xFF0000)
        strip2.setPixelColor(i, 0xFF0000)
+   for i in range (scri,scre):
+       strip1.setPixelColor(i, 0xFF0000)
+       strip2.setPixelColor(i, 0xFF0000)
    for i in range (scgi,scge):
        strip1.setPixelColor(i, 0x00FF00)
        strip2.setPixelColor(i, 0x00FF00)
@@ -297,8 +300,8 @@ def carconfig():
    for i in range (scyi,scye):
        strip1.setPixelColor(i, 0xFFFF00)
        strip2.setPixelColor(i, 0xFFFF00)
-   strip1.show()
    strip2.show()
+   strip1.show()
    client_socket.send(data)
    #client_socket.close()
    
