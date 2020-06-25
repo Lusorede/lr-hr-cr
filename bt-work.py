@@ -93,6 +93,8 @@ if os.path.isfile('/home/ubuntu/lr-hr-cr/btvars.py'):
   scbe = btvars.scbe
   scyi = btvars.scyi
   scye = btvars.scye
+  configlabel = btvars.configlabel
+  slotcolor = btvars.slotcolor
 
 
 if os.path.isfile('/home/ubuntu/lr-hr-cr/btstrip.py'):
@@ -146,7 +148,7 @@ ir_wc_n = 0
 #LED_INVERT     = False   # True to invert the signal (when using NPN tr$
 #LED_CHANNEL    = 0       # set to '1' for GPIOs 13, 19, 41, 45 or 53
 
-SLOT = (LED_COUNT - LED_IN_SLOT) / N_SLOTS
+SLOT = (LED_COUNT - (N_SLOTS-1)) / N_SLOTS
 
 sred_st=0
 sgreen_st=0
@@ -167,7 +169,7 @@ slot_active = 9999
 #IR_Sensor_8 = 21
 
 
-configlabel = 'undefined'
+
   
 GPIO.setmode(GPIO.BCM)     #programming the GPIO by BCM pin numbers. (like PIN40 as GPIO21)
 GPIO.setwarnings(False)
@@ -218,6 +220,17 @@ def fin_car():
        strip2.setPixelColor(i, Color(1,1,1))
   strip1.show()
   strip2.show()
+  configlabel = 'undefined'
+  slotcolor = 'undefined'
+  scri = 0 
+  scre = 0
+  scgi = 0 
+  scge = 0
+  scbi = 0
+  scbe = 0
+  scyi = 0
+  scye = 0
+  reg_var()
 begin_car()
 time.sleep(500/1000)
 
@@ -273,6 +286,8 @@ def reg_var():
   f.write( 'scbe = ' + repr(scbe) + '\n' )
   f.write( 'scyi = ' + repr(scyi) + '\n' )
   f.write( 'scye = ' + repr(scye) + '\n' )
+  f.write( 'configlabel = ' + repr(configlabel) + '\n' )
+  f.write( 'slotcolor = ' + repr(slotcolor) + '\n' )
   f.close()
 
 def clear():
@@ -325,7 +340,9 @@ def sred():
        strip1.setPixelColor(i, 0x000000)
        strip2.setPixelColor(i, 0x000000)
    strip1.show()  
-   strip2.show()  
+   strip2.show() 
+   slotcolor = 'sred'
+   reg_var()   
    client_socket.send(data)
 def sgreen():
    for i in range (scri,scre):
@@ -342,6 +359,8 @@ def sgreen():
        strip2.setPixelColor(i, 0x000000)
    strip1.show()  
    strip2.show()  
+   slotcolor = 'sblue'
+   reg_var()
    client_socket.send(data)   
 def sblue():
    for i in range (scri,scre):
@@ -358,6 +377,8 @@ def sblue():
        strip2.setPixelColor(i, 0x000000)
    strip1.show()
    strip2.show()
+   slotcolor = 'sgreen'
+   reg_var()
    client_socket.send(data)  
 def syellow():
    for i in range (scri,scre):
@@ -374,6 +395,8 @@ def syellow():
        strip2.setPixelColor(i, 0xFFFF00)
    strip1.show() 
    strip2.show() 
+   slotcolor = 'syellow'
+   reg_var()
    client_socket.send(data)
 
 def wheel(pos):

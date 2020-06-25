@@ -34,17 +34,17 @@ class LCAdvertisement(Advertisement):
 #    LC_SVC_UUID = "00000001-6c75-736f-7264-6c726875676f"
 #
 #    def __init__(self, index):
-#        self.farenheit = True
+#        self.cartype = True
 #
 #        Service.__init__(self, index, self.LC_SVC_UUID, True)
 #        self.add_characteristic(LCCharacteristic(self))
 #        self.add_characteristic(UnitCharacteristic(self))
 #
-#    def is_farenheit(self):
-#        return self.farenheit
+#    def is_cartype(self):
+#        return self.cartype
 #
-#    def set_farenheit(self, farenheit):
-#        self.farenheit = farenheit
+#    def set_cartype(self, cartype):
+#        self.cartype = cartype
 #
 ##class LCCharacteristic(Characteristic):
 #    LC_CHARACTERISTIC_UUID = "00000002-6c75-736f-7264-6c726875676f"
@@ -63,7 +63,7 @@ class LCAdvertisement(Advertisement):
 #
 #        cpu = CPUTemperature()
 #        temp = cpu.temperature
-#        if self.service.is_farenheit():
+#        if self.service.is_cartype():
 #            temp = (temp * 1.8) + 32
 #            unit = "F"
 #
@@ -129,7 +129,7 @@ class LCAdvertisement(Advertisement):
 #    def WriteValue(self, value, options):
 #        val = str(value[0]).upper()
 #        if val == "C":
-#            self.service.set_farenheit(False)
+#            self.service.set_cartype(False)
 #        elif val == "F":
 #            self.service.set_farenheit(True)
 #
@@ -167,7 +167,7 @@ class LCIRService(Service):
     LCIR_SVC_UUID = "00001800-6c75-736f-7264-6c726875676f"
 
     def __init__(self, index):
-        self.farenheit = True
+        self.cartype = "teste"
 
         Service.__init__(self, index, self.LCIR_SVC_UUID, True)
         self.add_characteristic(LCIR01Characteristic(self))
@@ -182,11 +182,11 @@ class LCIRService(Service):
         self.add_characteristic(LCIRCBCharacteristic(self))
         self.add_characteristic(CarTypeCharacteristic(self))
 
-    def is_farenheit(self):
-        return self.farenheit
+    def is_cartype(self):
+        return self.cartype
 
-    def set_farenheit(self, farenheit):
-        self.farenheit = farenheit
+    def set_cartype(self, cartype):
+        self.cartype = cartype
 class LCIR01Characteristic(Characteristic):
     LCIR01_CHARACTERISTIC_UUID = "00002A56-6c75-736f-7264-4c4349523031"
 
@@ -212,7 +212,7 @@ class LCIR01Characteristic(Characteristic):
         #irst = 1
         irst = n.ir_slot06_t(slot_type,slot_active)
         print irst
-        #if self.service.is_farenheit():
+        #if self.service.is_cartype():
         #    temp = (temp * 1.8) + 32
         #    unit = "F"
         #
@@ -272,7 +272,7 @@ class LCIR02Characteristic(Characteristic):
         #irst = 1
         irst = n.ir_slot06_t(slot_type,slot_active)
         print irst
-        #if self.service.is_farenheit():
+        #if self.service.is_cartype():
         #    temp = (temp * 1.8) + 32
         #    unit = "F"
         #
@@ -332,7 +332,7 @@ class LCIR03Characteristic(Characteristic):
         #irst = 1
         irst = n.ir_slot06_t(slot_type,slot_active)
         print irst
-        #if self.service.is_farenheit():
+        #if self.service.is_cartype():
         #    temp = (temp * 1.8) + 32
         #    unit = "F"
         #
@@ -392,7 +392,7 @@ class LCIR04Characteristic(Characteristic):
         #irst = 1
         irst = n.ir_slot06_t(slot_type,slot_active)
         print irst
-        #if self.service.is_farenheit():
+        #if self.service.is_cartype():
         #    temp = (temp * 1.8) + 32
         #    unit = "F"
         #
@@ -452,7 +452,7 @@ class LCIR05Characteristic(Characteristic):
         #irst = 1
         irst = n.ir_slot06_t(slot_type,slot_active)
         print irst
-        #if self.service.is_farenheit():
+        #if self.service.is_cartype():
         #    temp = (temp * 1.8) + 32
         #    unit = "F"
         #
@@ -562,7 +562,7 @@ class LCIR07Characteristic(Characteristic):
         #irst = 1
         irst = n.ir_slot06_t(slot_type,slot_active)
         print irst
-        #if self.service.is_farenheit():
+        #if self.service.is_cartype():
         #    temp = (temp * 1.8) + 32
         #    unit = "F"
         #
@@ -622,7 +622,7 @@ class LCIR08Characteristic(Characteristic):
         #irst = 1
         irst = n.ir_slot06_t(slot_type,slot_active)
         print irst
-        #if self.service.is_farenheit():
+        #if self.service.is_cartype():
         #    temp = (temp * 1.8) + 32
         #    unit = "F"
         #
@@ -682,7 +682,7 @@ class LCIRWBCharacteristic(Characteristic):
         #irst = 1
         irst = n.ir_slot06_t(slot_type,slot_active)
         print irst
-        #if self.service.is_farenheit():
+        #if self.service.is_cartype():
         #    temp = (temp * 1.8) + 32
         #    unit = "F"
         #
@@ -742,7 +742,7 @@ class LCIRCBCharacteristic(Characteristic):
         #irst = 1
         irst = n.ir_slot06_t(slot_type,slot_active)
         print irst
-        #if self.service.is_farenheit():
+        #if self.service.is_cartype():
         #    temp = (temp * 1.8) + 32
         #    unit = "F"
         #
@@ -975,9 +975,9 @@ class CarTypeCharacteristic(Characteristic):
     #def WriteValue(self, value, options):
     #    val = str(value[0]).upper()
     #    if val == "C":
-    #        self.service.set_farenheit(False)
+    #        self.service.set_cartype(False)
     #    elif val == "F":
-    #        self.service.set_farenheit(True)
+    #        self.service.set_cartype(True)
     def WriteValue(self, value, options):
 	   n = 1
 	   n = n + 1
@@ -987,16 +987,19 @@ class CarTypeCharacteristic(Characteristic):
 	   if n > 0:  
 	    n = 0
 	    con(data_send)
-	   #self.service.set_farenheit(data)
+		
+	   self.service.set_cartype(data_send)
 	   #print data
     def ReadValue(self, options):
         value = []
+        value = self.service.is_cartype
 
-        if self.service.is_farenheit(): val = "F"
-        else: val = "C"
-        value.append(dbus.Byte(val.encode()))
+        #if self.service.is_cartype(): val = "F"
+        #else: val = "C"
+        #value.append(dbus.Byte(val.encode()))
 
-        return value		
+        return value
+	
 		
 class CarTypeDescriptor(Descriptor):
     CarType_DESCRIPTOR_UUID = "2901"

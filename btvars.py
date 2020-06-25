@@ -6,3 +6,5 @@ scbi = 28
 scbe = 41
 scyi = 42
 scye = 55
+configlabel = "cars15"
+slotcolor = 'sred'

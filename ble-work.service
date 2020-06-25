@@ -1,0 +1,14 @@
+[Unit]
+Description=LR CAR BLE Service
+After=bt-work.service
+Conflicts=getty@tty1.service
+
+[Service]
+Type=idle
+ExecStartPre=/bin/sleep 1
+ExecStart=/usr/bin/python /home/ubuntu/lr-hr-cr/ble-work.py 3>&1 1>>/var/log/ble-work-py.log 2>&1
+StandardInput=tty-force
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
