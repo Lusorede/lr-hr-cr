@@ -97,12 +97,7 @@ sudo systemctl start bt-work
 #sudo cp bt_iphone.sh /usr/bin/bt_iphone.sh
 #sudo chmod +x /usr/bin/bt_iphone.sh
 
-###############################
-##           BLE-PYTHON      ##
-###############################
-sudo pip install bluepy pexpect pybluez
 
-sudo reboot
 ###############################
 ##    LR-CR BLE-WORKER       ##
 ###############################
