@@ -60,7 +60,7 @@ sudo reboot
 ###############################
 ##           BLE-PYTHON      ##
 ###############################
-sudo pip install bluepy pexpect pybluez GPIO RPi.GPIO rpi_ws281x
+sudo pip install bluepy pexpect pybluez GPIO RPi.GPIO rpi_ws281x gpiozero
 sudo cp /home/ubuntu/lr-hr-cr/__init__.py /usr/local/lib/python2.7/dist-packages/bluetooth/__init__.py
 
 sudo reboot
